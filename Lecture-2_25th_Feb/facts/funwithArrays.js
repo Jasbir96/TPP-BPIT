@@ -21,10 +21,13 @@ let transformedArr = arr.map(transformer);
 const primeArr = transformedArr.filter(filterPrime);
 console.log(primeArr);
 
+
+
 function sqauarer(x) {
   return x * x;
 }
 mymap(arr, squarer);
+
 // mymap(arr,cb)
 // map => odd=>-1,even=>+1 done
 // filter => used mapped arr=> filter prime arr

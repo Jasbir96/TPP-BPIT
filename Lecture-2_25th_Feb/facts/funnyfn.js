@@ -5,8 +5,8 @@ let b = a;
 // console.log(b);
 // you can pass variables as parameters
 // function definition
-function greeter(whatToSay) {
-  whatToSay();
+= function greeter(whatToSay) {
+  console.log(whatToSay);
 }
 
 let sayHi = greeter;
