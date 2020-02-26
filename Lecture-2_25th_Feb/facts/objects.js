@@ -9,5 +9,6 @@ let obj = {
     state: "Manhatten"
   }
 };
+
 console.log(obj.name);
 console.log(obj.movies[1]);
