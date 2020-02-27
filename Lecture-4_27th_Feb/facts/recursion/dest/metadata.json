@@ -1,0 +1,20 @@
+{
+  "isFile": false,
+  "name": "d10",
+  "children": [
+    {
+      "isFile": false,
+      "name": "d20",
+      "children": [
+        { "isFile": false, "name": "d40",
+           "children": [] },
+        { "isFile": true, 
+          "name": "f2.txt", 
+          "newName": "1bxyg19b0k74qux4e" }
+      ]
+    },
+    { "isFile": true, 
+      "name": "f1.txt", 
+      "newName": "1bxyg19b0k74qux4g" }
+  ]
+}

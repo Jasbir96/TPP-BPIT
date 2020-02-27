@@ -7,7 +7,10 @@ module.exports.untreefy = function() {
   let dest = arguments[1];
   let root = {};
   untreefyFolder(src, dest, root);
-  console.log(root);
+  fs.writeFileSync(path.join(dest, "metadata.json"), JSON.stringify(root));
+  console.log("File written to dest");
+  // console.log(root);
+
   console.log("All files have been copied");
 };
 

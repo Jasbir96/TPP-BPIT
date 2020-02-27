@@ -66,5 +66,4 @@ function displayGtree(node) {
     displayGtree(node.children[i]);
   }
 }
-
 displayGtree(root);
