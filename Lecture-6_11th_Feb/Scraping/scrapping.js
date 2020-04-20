@@ -24,15 +24,12 @@ function parseHtml(html) {
   let co = cheerio.load(html);
 
   let tableArr = co(".scorecard-section.bowling table tbody tr");
-// number of bowlers
 
   let maxWicketTaker = "";
   let maxWickets = 0;
   for (let i = 0; i < tableArr.length; i++) {
-    //  particular bowler column
     let tdArr = co(tableArr[i]).find("td");
     let wicket = co(tdArr[5]).html();
-    
     let bowlerName = co(tableArr[i])
       .find("td a")
       .html();
