@@ -1,0 +1,16 @@
+{
+  "name": "Lecture-3_21_04_20_PepcodingAuto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^81.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
