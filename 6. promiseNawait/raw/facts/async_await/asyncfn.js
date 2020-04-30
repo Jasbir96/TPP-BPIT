@@ -1,6 +1,4 @@
-
 async function myfn() {
-
   // return 
   // async work 
 }
