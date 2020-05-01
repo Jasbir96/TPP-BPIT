@@ -3,6 +3,9 @@ let cFile = process.argv[2];
 let fs = require("fs");
 (async function () {
   // browser open => visible 
+  try {
+
+  }
   let browser = await puppeteer.launch({
     headless: false,
     defaultViewport: null,
@@ -24,18 +27,21 @@ let fs = require("fs");
   // let unNpsEl = await Promise.all([unInputWillBeFoundPromise, psInputWillBeFoundPromise]);
   await page.type("#input-1", user);
   await page.type("#input-2", pwd);
-  await page.click("button[data-analytics=LoginPassword]");
+
+  await Promise.all(
+    [page.waitForNavigation({ waitUntil: "networkidle0" }),
+    page.click("button[data-analytics=LoginPassword]")])
   // ********************DashBoard*************************
-  await page.waitForNavigation({ waitUntil: "networkidle0" })
+
   await page.waitForSelector("a[data-analytics=NavBarProfileDropDown]", { visible: true });
   await page.click("a[data-analytics=NavBarProfileDropDown]");
-  await page.click("a[data-analytics=NavBarProfileDropDownAdministration]");
-  // findElements
-  //  loader => visible 
-  // backend data
-  await page.waitForNavigation({ waitUntil: "networkidle0" })
+  await Promise.all(
+    [page.waitForNavigation({ waitUntil: "networkidle0" }),
+    page.click("a[data-analytics=NavBarProfileDropDownAdministration]"),])
+
   await page.waitForSelector(".administration header", { visible: true })
   let tabs = await page.$$(".administration header ul li a");
+
   let href = await page.evaluate(function (el) {
     return el.getAttribute("href");
   }, tabs[1])
@@ -43,16 +49,16 @@ let fs = require("fs");
   // console.log("Line number number " + mpUrl);
   await page.goto(mpUrl, { waitUntil: "networkidle0" });
   // get question
+
   let qidx = 0;
-  let question = await getMeQuestionElement(page, qidx, mpUrl);
   while (true) {
     //  => qnumber => question
+    let question = await getMeQuestionElement(page, qidx, mpUrl);
     if (question == null) {
       console.log("All Question processed");
       return;
     }
     await handleQuestion(page, question, process.argv[3]);
-     question = await getMeQuestionElement(page, qidx, mpUrl);
     qidx++;
   }
 })();
@@ -63,9 +69,9 @@ async function getMeQuestionElement(page, qidx, mpUrl) {
   console.log(pidx + " " + pQidx);
   // go to manage challenges page => pidx=0
   await page.goto(mpUrl);
+  await page.waitForNavigation({ waitUntil: "networkidle0" });
   // await waitForLoader(page);
   // you will wait for pagination 
-  await page.waitForNavigation({ waitUntil: "networkidle0" });
   await page.waitForSelector(".pagination ul li", { visible: true });
   let paginations = await page.$$(".pagination ul li");
   let nxtBtn = paginations[paginations.length - 2];
@@ -109,16 +115,16 @@ async function handleQuestion(page, question, uToAdd) {
   // }, question);
   // console.log(qUrl);
   // await page.goto(qUrl);
-  await question.click();
+  
   //  backend data 
   // await waitForLoader(page);
-  await page.waitForNavigation({ waitUntil: "networkidle0" });
+  await Promise.all([page.waitForNavigation({ waitUntil: "networkidle0" }), question.click()]);
   await page.waitForSelector("li[data-tab=moderators]", { visible: true })
   await page.click("li[data-tab=moderators]");
-  await page.waitForSelector("input[id=moderator]",{visible:true});
+  await page.waitForSelector("input[id=moderator]", { visible: true });
   await page.type("#moderator", uToAdd);
   await page.keyboard.press("Enter");
- await  page.click(".save-challenge.btn.btn-green")
+  await page.click(".save-challenge.btn.btn-green")
 }
 
 // wait ?? 
