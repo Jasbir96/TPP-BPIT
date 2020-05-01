@@ -13,3 +13,12 @@
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
+## Selenium
+  * https://www.selenium.dev/documentation/en/
+  * https://www.selenium.dev/selenium/docs/api/javascript/index.html
+ **Issue With code Mirror** 
+  * https://github.com/seleniumhq/selenium/issues/1077
+  * https://www.softpost.org/selenium-with-node-js/executing-javascript-in-selenium-in-node-js/
+## Puppeteer  
+  * https://flaviocopes.com/puppeteer/
+	* https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
