@@ -39,12 +39,10 @@ let fs = require("fs");
   let href = await page.evaluate(function (el) {
     return el.getAttribute("href");
   }, tabs[1])
-
   let mpUrl = "https://www.hackerrank.com" + href;
   // console.log("Line number number " + mpUrl);
   await page.goto(mpUrl, { waitUntil: "networkidle0" });
   // get question
-
   let qidx = 0;
   let question = await getMeQuestionElement(page, qidx, mpUrl);
   while (true) {

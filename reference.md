@@ -26,4 +26,8 @@
   * https://pptr.dev
   * https://github.com/puppeteer/puppeteer/blob/master/docs/api.md#pageclickselector-options
 ## Questions
-    * Complete hackerrank add moderator scr 
+    * Complete hackerrank add moderator(puppeteer)
+    * Complete hackerrank add moderator and testcases(selenium)
+    * Complete Fb autoliker activity => you will be given credentials ,page name , number of post to like 
+        you need to like the given number of post in that page
+    
