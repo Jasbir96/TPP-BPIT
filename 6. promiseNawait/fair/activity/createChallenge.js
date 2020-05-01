@@ -29,11 +29,11 @@ let questionsFile = process.argv[3];
     let ManageChallengePage = await driver.getCurrentUrl();
     let questions = require(questionsFile);
     // // Json file read
-    // for (let i = 0; i < questions.length; i++) {
-    //   await driver.get(ManageChallengePage)
-    //   await waitForLoader();
-    //   await createNewChallenge(questions[i]);
-    // }
+    for (let i = 0; i < questions.length; i++) {
+      await driver.get(ManageChallengePage)
+      await waitForLoader();
+      await createNewChallenge(questions[i]);
+    }
     // content 
     // createchallenge
     // console.log("All code editor have some data");
