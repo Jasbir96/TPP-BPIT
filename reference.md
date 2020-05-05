@@ -30,4 +30,13 @@
     * Complete hackerrank add moderator and testcases(selenium)
     * Complete Fb autoliker activity => you will be given credentials ,page name , number of post to like 
         you need to like the given number of post in that page
-    
+  Event Loop
+  * https://www.youtube.com/watch?v=u1kqx6AenYw
+  ## Ruby
+  * http://www.newthinktank.com/2015/02/ruby-programming-tutorial/
+  
+  ## Questions
+    Que fibonacci till n
+    Que Spiral Display
+    Que Pattern
+    Que Kadans Algo    
