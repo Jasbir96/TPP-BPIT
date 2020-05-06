@@ -25,6 +25,9 @@
   **Official**
   * https://pptr.dev
   * https://github.com/puppeteer/puppeteer/blob/master/docs/api.md#pageclickselector-options
+  **Examples**
+  * https://github.com/checkly/puppeteer-examples
+  * https://github.com/sarfraznawaz2005/whatspup
 ## Questions
     * Complete hackerrank add moderator(puppeteer)
     * Complete hackerrank add moderator and testcases(selenium)
@@ -34,7 +37,6 @@
   * https://www.youtube.com/watch?v=u1kqx6AenYw
   ## Ruby
   * http://www.newthinktank.com/2015/02/ruby-programming-tutorial/
-  
   ## Questions
     Que fibonacci till n
     Que Spiral Display
