@@ -37,6 +37,7 @@
   * https://www.youtube.com/watch?v=u1kqx6AenYw
   ## Ruby
   * http://www.newthinktank.com/2015/02/ruby-programming-tutorial/
+  https://try.ruby-lang.org/
   ## Questions
     Que fibonacci till n
     Que Spiral Display
