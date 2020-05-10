@@ -34,6 +34,7 @@ let nPost = process.argv[4];
         waitUntil: "networkidle2"
       })
     ])
+    
     await tab.goto(pUrl, { waitUntil: "networkidle2" });
     await tab.waitForSelector("div[data-key=tab_posts]");
     //  post => click => reroute=> 2 times=> 2 times (wait for navigation)
@@ -41,6 +42,10 @@ let nPost = process.argv[4];
       tab.click("div[data-key=tab_posts]"),
       tab.waitForNavigation({waitUntil:"networkidle2"})
     ])
+
+
+
+
     await tab.waitForNavigation({waitUntil:"networkidle2"});
      
     let idx = 0;
