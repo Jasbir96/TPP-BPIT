@@ -42,12 +42,7 @@ let nPost = process.argv[4];
       tab.click("div[data-key=tab_posts]"),
       tab.waitForNavigation({waitUntil:"networkidle2"})
     ])
-
-
-
-
     await tab.waitForNavigation({waitUntil:"networkidle2"});
-     
     let idx = 0;
     do {
       //  post => 7 post => are loaded 
@@ -75,8 +70,6 @@ let nPost = process.argv[4];
     console.log(err)
   }
 })()
-
-
 // div class="1xnd"
 //     div 
 //       ul

@@ -2,12 +2,10 @@ let puppeteer = require("puppeteer");
 let cFile = process.argv[2];
 let fs = require("fs");
 (async function () {
-
   // browser create => icognito mode,fullscreen
   try {
     let data = await fs.promises.readFile(cFile);
     let { url, pwd, user } = JSON.parse(data);
-
     // launch browser
     let browser = await puppeteer.launch({
       headless: false,
@@ -79,7 +77,6 @@ async function handleSinglePageQuestion(tab, browser) {
   // go to next page 
   await tab.waitForSelector(".pagination ul li");
   let paginationBtn = await tab.$$(".pagination ul li");
-
   let nxtBtn = paginationBtn[paginationBtn.length - 2];
   let className = await tab.evaluate(function (nxtBtn) {
     return nxtBtn.getAttribute("class");

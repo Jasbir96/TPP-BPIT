@@ -29,7 +29,6 @@
  ##### **Examples**
   * https://github.com/checkly/puppeteer-examples
   * https://github.com/sarfraznawaz2005/whatspup
-  
   ### Event Loop
   * https://www.youtube.com/watch?v=u1kqx6AenYw
   ### Ruby
@@ -52,4 +51,3 @@
   * https://www.youtube.com/watch?v=u1kqx6AenYw
  ### Puppeteer
     Go through official documentation it is the best 
-

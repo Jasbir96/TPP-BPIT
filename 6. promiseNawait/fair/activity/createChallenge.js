@@ -3,7 +3,6 @@ require("chromedriver");
 let swd = require("selenium-webdriver");
 let bldr = new swd.Builder();
 let driver = bldr.forBrowser("chrome").build();
-
 let cFile = process.argv[2];
 let questionsFile = process.argv[3];
 (async function () {
@@ -11,7 +10,6 @@ let questionsFile = process.argv[3];
     // ******************************************Login****************************
     // selenium 
     await loginHelper();
-
     // ************************dashboard**********************************
     let DropDownBtn = await driver.findElement(swd.By.css("a[data-analytics=NavBarProfileDropDown]"))
     await DropDownBtn.click();
@@ -25,7 +23,6 @@ let questionsFile = process.argv[3];
     await waitForLoader();
     let manageTabs = await driver.findElements(swd.By.css(".administration header ul li"));
     await manageTabs[1].click();
-
     let ManageChallengePage = await driver.getCurrentUrl();
     let questions = require(questionsFile);
     // // Json file read
@@ -88,6 +85,7 @@ async function createNewChallenge(question) {
   await submitBtn.click();
 
 }
+
 async function loginHelper() {
   await driver.manage().setTimeouts({ implicit: 10000, pageLoad: 10000 })
   let data = await fs.promises.readFile(cFile);
@@ -103,11 +101,11 @@ async function loginHelper() {
   let loginBtn = await driver.findElement(swd.By.css("button[data-analytics=LoginPassword]"));
   await loginBtn.click();
 }
-
 async function waitForLoader() {
   let loader = await driver.findElement(swd.By.css("#ajax-msg"));
   await driver.wait(swd.until.elementIsNotVisible(loader));
 }
+
 async function editorHandler(parentSelector, element, data) {
   let parent = await driver.findElement(swd.By.css(parentSelector));
   // selenium => browser js execute 

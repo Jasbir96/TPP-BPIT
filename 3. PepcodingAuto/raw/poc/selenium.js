@@ -13,7 +13,7 @@ let driver = bldr.forBrowser("chrome").build();
 // promise=> page open future 
 // value =>value 
 // pending
-// depended=> 
+// dependant=> 
 // independent
 let username, password, gModules;
 // ************************************Login******************************************************
