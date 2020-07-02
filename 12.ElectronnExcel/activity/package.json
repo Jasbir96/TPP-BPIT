@@ -5,12 +5,16 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"electron ."
+    "start": "electron ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^9.0.5"
+  },
+  "dependencies": {
+    "ejs-electron": "^2.0.3",
+    "jquery": "^3.5.1"
   }
 }

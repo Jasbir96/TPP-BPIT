@@ -1,0 +1,82 @@
+html,body{
+    margin: 0px;
+    padding: 0px;
+}
+/* ?? */
+*{
+    box-sizing: border-box;
+}
+.menu{
+    height: 22px;
+    border: 1px solid red;
+}
+.menu-options{
+    height: 56px;
+    border: 1px solid green;
+
+}
+.formula-bar{
+    height: 26px;
+    border: 1px solid yellow;
+}
+/* Cell Conatiner area */
+.cell-container{
+    height: calc(100vh - 124px);  
+    overflow: auto;
+    position: relative;
+}
+.top-left-cell{
+    height: 25px;
+    width:25px;
+    background-color: gray;
+    position: absolute;
+}
+.top-row{
+    display: flex;
+    position: absolute;
+    left: 26px;
+    height: 25px;
+    top:0px;
+    background-color: lightgrey;
+    text-align: center; 
+}
+.top-row>.cell{
+    min-width: 87px;
+    border:1px solid ;
+}
+.left-col{
+    position: absolute;
+    top: 25px;
+}
+.left-col>.cell{
+    width:25px;
+    height: 25px;
+background-color: lightgrey ;
+border: 1px solid;
+}
+.row{
+    display: flex; 
+ }
+.grid{
+    position: absolute;
+    top: 25px;
+    left: 26px;
+}
+.row>.cell{
+    min-width: 87px;
+    border: 1px solid teal;
+    text-align: center;
+min-height: 25px;
+}
+/* .col{
+    height: 25px;
+    border: 1px solid;
+    min-width: 49px;
+} */
+
+/* *************sheets area********** */
+.sheets{
+    height: 20px;
+    border: 1px solid darkslategrey;
+
+}
