@@ -50,4 +50,7 @@
   * https://nodesource.com/blog/understanding-the-nodejs-event-loop/
   * https://www.youtube.com/watch?v=u1kqx6AenYw
  ### Puppeteer
-    Go through official documentation it is the best 
+    Go through official documentation it is the best
+ ### JQuery
+ * https://www.w3schools.com/jquery/default.asp
+    Finish Jquery Tutorial and html from here 
