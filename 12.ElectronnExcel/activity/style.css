@@ -1,11 +1,19 @@
 html,body{
     margin: 0px;
     padding: 0px;
+    color:#777;
+    font-family: sans-serif;
+   font-size: 1rem;
 }
 /* ?? */
 *{
     box-sizing: border-box;
 }
+.ib{
+    display: inline-block;
+}
+
+/* Menu */
 .menu{
     height: 22px;
     border: 1px solid red;
@@ -13,8 +21,27 @@ html,body{
 .menu-options{
     height: 56px;
     border: 1px solid green;
-
 }
+
+/* New changes */
+.menu-items{
+    width: 45px;
+    font-size: 90%;
+    text-align: center;
+}
+.menu-options-item{
+    display: none
+}
+.selected{
+    display: block;
+}
+#File-options>div{
+    width:50px;
+    text-align: center;
+}
+
+
+/* Formula */
 .formula-bar{
     height: 26px;
     border: 1px solid yellow;
