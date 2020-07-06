@@ -23,7 +23,7 @@
             <div id="New" class="ib">New</div>
             <div id="Open" class="ib">Open</div>
             <div id="Save" class="ib"> Save</div>
-            <input type="file" name="" id="File-saver">
+            <!-- <input type="file" name="" id="File-saver"> -->
         </div>
         <div id="Home-options" class="menu-options-item">Home Options
         </div>
@@ -37,7 +37,7 @@
     <div class="formula-bar">
         Formula Bar
         <input type="text" id="address-container">
-        <input type="text"></div>
+        <input type="text" id="formula-container"></div>
     <div class="cell-container">
         <div id="top-left-cell" class="top-left-cell">
         </div>
@@ -58,7 +58,7 @@
 
 
             <div class="grid" id="grid">
-            <%for(let i=0;i<=rows;i++){%>
+            <%for(let i=0;i<rows;i++){%>
             <div class="row">
                 <%for(let j=0;j<cols;j++){%>
                 <div class="cell" contenteditable="true" ri=<%=i%> ci=<%=j%>>
