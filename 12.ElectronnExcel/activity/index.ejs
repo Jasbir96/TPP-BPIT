@@ -25,22 +25,53 @@
             <div id="Save" class="ib"> Save</div>
             <!-- <input type="file" name="" id="File-saver"> -->
         </div>
-        <div id="Home-options" class="menu-options-item">Home Options
+        <div id="Home-options" class="menu-options-item">
+            <div class="menu-group">
+                <div class="menu-row">
+                    <select name="" id="font-family">
+                        <option value="Arial">Arial</option>
+                        <option value="Cambria">Font-2</option>
+                        <option value="monospace">monospace</option>
+                        <option value="sans-Serif">sans-Serif</option>
+                        <option value="sans">sans</option>
+                    </select>
+                    <select name="" id="font-size">
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="32">32</option>
+                    </select>
+                </div>
+                <div class="menu-row">
+                    <input type="button" value="B" id="bold">
+                    <input type="button" value="U" id="underline">
+                    <input type="button" value="I" id="italic">
+                    <input type="color" id="bg-color" value="white">
+                    <input type="color" id="text-color" value="black">
+                </div>
+            </div>
+            <div class="menu-group">
+                <div class="menu-row">
+                    <input type="button" value="L" id="left">
+                    <input type="button" value="C" id="center">
+                    <input type="button" value="R" id="right">
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-
-
 
     <div class="formula-bar">
         Formula Bar
         <input type="text" id="address-container">
         <input type="text" id="formula-container"></div>
-    <div class="cell-container">
+    <div class="cell-container" id="grid-container">
         <div id="top-left-cell" class="top-left-cell">
         </div>
+
+
+
+
         <div class="top-row" id=top-row>
             <%for(let j=0;j<cols;j++){%>
             <div class="cell">
@@ -67,9 +98,6 @@
                     <%}%>
             </div>
         </div>
-
-
-
         <div class="sheets">
         </div>
         <script src="index.js"></script>

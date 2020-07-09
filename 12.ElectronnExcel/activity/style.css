@@ -19,7 +19,7 @@ html,body{
     border: 1px solid red;
 }
 .menu-options{
-    height: 56px;
+    height: 61px;
     border: 1px solid green;
 }
 
@@ -30,10 +30,21 @@ html,body{
     text-align: center;
 }
 .menu-options-item{
-    display: none
+    display: none;
+    height: 100%;
+    margin-left:19px;
 }
-.selected{
-    display: block;
+.menu-group{
+    width: 208px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    border-right: 1px solid lightgray;
+    border-radius: 1px;
+}
+.menu-options-item.selected{
+    display: flex;
 }
 #File-options>div{
     width:50px;
@@ -48,7 +59,7 @@ html,body{
 }
 /* Cell Conatiner area */
 .cell-container{
-    height: calc(100vh - 124px);  
+    height: calc(100vh - 129px);  
     overflow: auto;
     position: relative;
 }
@@ -57,6 +68,9 @@ html,body{
     width:25px;
     background-color: gray;
     position: absolute;
+    top:0px;
+    left:0px;
+    z-index:3;
 }
 .top-row{
     display: flex;
@@ -66,6 +80,7 @@ html,body{
     top:0px;
     background-color: lightgrey;
     text-align: center; 
+    z-index:2;
 }
 .top-row>.cell{
     min-width: 87px;
@@ -74,6 +89,8 @@ html,body{
 .left-col{
     position: absolute;
     top: 25px;
+    left:0px;
+    z-index:2;
 }
 .left-col>.cell{
     width:25px;
@@ -88,6 +105,7 @@ border: 1px solid;
     position: absolute;
     top: 25px;
     left: 26px;
+    z-index:1;
 }
 .row>.cell{
     min-width: 87px;
@@ -100,10 +118,16 @@ min-height: 25px;
     border: 1px solid;
     min-width: 49px;
 } */
+#grid .cell{
+    max-width: 50px
 
+}
 /* *************sheets area********** */
 .sheets{
     height: 20px;
     border: 1px solid darkslategrey;
 
+}
+input[type="button"].selected{
+background-color: lightslategrey;
 }
