@@ -11,12 +11,20 @@
 
 <body>
     <!-- #menu.menu-container+#menu-options.menu-options+(#formula-container>(#address-input+#formula-input))+#cell-conatiner.cell-conatiner+#sheets.sheets -->
-    <div id="menu-container" class="menu-container">Menu Container</div>
+    <div id="menu-container" class="menu-container">
+        <div id="File" class="menu">File</div>
+        <div id="Home" class="menu">Home</div>
+    </div>
 
-    <div id="menu-option-container" class="menu-option-container">Menu Options</div>
-
+    <div id="menu-option-container" class="menu-option-container">
+        <div id="File-menu-options" class="menu-options">
+            <div id="new">New</div>
+            <div id="open">Open</div>
+            <div id="save">Save</div>
+        </div>
+    </div>
     <div id="formula-container" class="formula-container">
-        <input type="text" id="address-input"><input type="text" id="formula-input">
+        <input type="text" id="address-input" value="A1"><input type="text" id="formula-input">
     </div>
     <div id="cell-container" class="cell-container">
         <div id="tl-cell" class="tl-cell"></div>
@@ -32,20 +40,20 @@
             <div class="cell">
                 <%=j+1%>
             </div>
-                <%}%>
+            <%}%>
         </div>
         <div id="grid" class="grid">
             <%for(let i=0;i<rows;i++){%>
             <div class="row">
                 <%for(let j=0;j<cols;j++){%>
-                <div class="cell">cell</div>
+                <div class="cell" contenteditable="true" rid=<%=i%> cid=<%=j%>>cell</div>
                 <%}%>
         </div>
         <%}%>
             </div>
         </div>
         <div id="sheets" class="sheets">Sheets</div>
-
+        <script src="script.js"></script>
 </body>
 
 </html>

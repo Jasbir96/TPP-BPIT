@@ -9,10 +9,19 @@ padding:0px;
 .menu-container{
     height: 20px;
     border: 1px solid;
+    display: flex;
+    justify-content: space-evenly;
+    width:200px;
 }
 .menu-option-container{
     height: 60px;
     border: 1px solid rebeccapurple;
+}
+.menu-options{
+    display: flex;
+    width: 279px;
+    height: 100px;
+    justify-content: space-around;
 }
 .formula-container{
     height: 30px;
@@ -33,8 +42,9 @@ padding:0px;
     min-width: 80px;
     /* width: 80px; */
     text-align: center;
-    height: 25px;
-     min-height: 25px;   
+    /* height: 25px; */
+     min-height: 25px; 
+     max-width:80px;  
 }
 .row{
     display:flex;
@@ -60,4 +70,7 @@ background-color: green;
     position: absolute;
     top:25px;
     left: 25px;
+}
+.menu{
+
 }

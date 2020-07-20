@@ -14,6 +14,7 @@
     "electron": "^9.1.0"
   },
   "dependencies": {
-    "ejs-electron": "^2.1.0"
+    "ejs-electron": "^2.1.0",
+    "jquery": "^3.5.1"
   }
 }
