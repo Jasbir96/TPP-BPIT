@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- <h1>First Electron App</h1> -->
+
+<body>
+    <!-- #menu.menu-container+#menu-options.menu-options+(#formula-container>(#address-input+#formula-input))+#cell-conatiner.cell-conatiner+#sheets.sheets -->
+    <div id="menu-container" class="menu-container">Menu Container</div>
+
+    <div id="menu-option-container" class="menu-option-container">Menu Options</div>
+
+    <div id="formula-container" class="formula-container">
+        <input type="text" id="address-input"><input type="text" id="formula-input">
+    </div>
+    <div id="cell-container" class="cell-container">
+        <div id="tl-cell" class="tl-cell"></div>
+        <div id="top-row" class="top-row">
+            <%for(let i=0;i<cols;i++){%>
+            <div class="cell">
+                <%=String.fromCharCode(i+65)%>
+            </div>
+            <%}%>
+        </div>
+        <div id="left-col" class="left-col">
+            <%for(let j=0;j<rows;j++){%>
+            <div class="cell">
+                <%=j+1%>
+            </div>
+                <%}%>
+        </div>
+        <div id="grid" class="grid">
+            <%for(let i=0;i<rows;i++){%>
+            <div class="row">
+                <%for(let j=0;j<cols;j++){%>
+                <div class="cell">cell</div>
+                <%}%>
+        </div>
+        <%}%>
+            </div>
+        </div>
+        <div id="sheets" class="sheets">Sheets</div>
+
+</body>
+
+</html>

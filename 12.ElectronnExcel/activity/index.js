@@ -15,9 +15,7 @@ $(document).ready(
             // get al the formating from the cellobject
             // add selected class 
 // checks
-            if (!cellObject.bold) {
-                $("#bold").addClass("selected");
-            }
+            
 
             $(this).addClass("selected");
             if (lsc && lsc != this)
