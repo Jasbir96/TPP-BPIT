@@ -30,7 +30,8 @@ $(document).ready(function () {
                 let cell = {
                     value: "",
                     formula: "",
-                    children: []
+                    children: [],
+                    parents: []
                 };
                 row.push(cell);
             }
@@ -38,17 +39,7 @@ $(document).ready(function () {
         }
     })
 
-    // update
-    $("#grid .cell").on("blur", function () {
-        //  update entry in db
-        let rowId = $(this).attr("rid");
-        let colId = $(this).attr("cid");
-        // to get text of any element except input
-        let value = $(this).html();
-        // console.log(value);
-        updateCell(rowId, colId, value);
-        // console.log(db);
-    })
+
     $("#open").on("click", async function () {
         // it gives array of file Paths os selected file
         let sdb = await dialog.showOpenDialog();
@@ -79,19 +70,43 @@ $(document).ready(function () {
 
 
     // ****************Formula************************
+    // update
+    // val=> val 
+    // val => formula
+    $("#grid .cell").on("blur", function () {
+        //  update entry in db
+        let rowId = $(this).attr("rid");
+        let colId = $(this).attr("cid");
+        let cellObject = db[rowId][colId];
+        if (cellObject.formula) {
+            removeFormula(cellObject, rowId, colId);
+        }
+        // to get text of any element except input
+        let value = $(this).html();
+        // console.log(value);
+        updateCell(rowId, colId, value);
+        // console.log(db);
+    })
 
+    // val=> formula
+    // formula => formula
     $("#formula-input").on("blur", function () {
         let formula = $(this).val();
         // console.log(value);
         let cellAdddress = $("#address-input").val();
-        // coordinates=> update ui and db 
-        let ans = evaluate(formula);
         let { rowId, colId } = getRCFromAddr(cellAdddress);
         let cellObject = db[rowId][colId];
+        if (cellObject.formula) {
+            removeFormula(cellObject, rowId, colId);
+        }
+        // coordinates=> update ui and db 
+        let ans = evaluate(formula);
         cellObject.formula = formula;
-        setUpFormula(rowId, colId, formula);
+        setUpFormula(rowId, colId, formula, cellObject);
         updateCell(rowId, colId, ans);
     })
+
+
     function evaluate(formula) {
         // Split and iterate over formula
         // ( A1 + A2 )
@@ -116,7 +131,7 @@ $(document).ready(function () {
         return ans;
     }
 
-    function setUpFormula(crowId, ccolId, formula) {
+    function setUpFormula(crowId, ccolId, formula, cellObject) {
         // Split and iterate over formula
         // ( A1 + A2 )
         let fCOmp = formula.split(" ");
@@ -133,10 +148,31 @@ $(document).ready(function () {
                     rowId: crowId,
                     colId: ccolId
                 })
-
+                cellObject.parents.push({
+                    rowId: rowId,
+                    colId: colId
+                })
             }
 
         }
+
+    }
+    function removeFormula(cellObject, rowId, colId) {
+        for (let i = 0; i < cellObject.parents.length; i++) {
+            let parentRc = cellObject.parents[i];
+            let parentObj = db[parentRc.rowId][parentRc.colId];
+            // let newArr = parentObj.children.filter(function (elemRc) {
+            //     return !(rowId == elemRc.rowId && colId == elemRc.colId);
+            // })
+            // parentObj.children = newArr;
+
+            let idx = parentObj.children.findIndex(function (elemRc) {
+                return (rowId == elemRc.rowId && colId == elemRc.colId);
+            })
+            parentObj.children.splice(idx,1)
+        }
+        cellObject.parents = [];
+        cellObject.formula = "";
 
     }
     function updateCell(rowId, colId, ans) {
@@ -145,6 +181,7 @@ $(document).ready(function () {
         // $('#grid .cell[rid="+rowId"+"]["+"cid="+colId+"]"').html(ans);
         let cellObject = db[rowId][colId];
         cellObject.value = ans;
+
         for (let i = 0; i < cellObject.children.length; i++) {
             let childRc = cellObject.children[i];
             let cObj = db[childRc.rowId][childRc.colId];
