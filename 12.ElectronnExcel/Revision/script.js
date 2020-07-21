@@ -11,6 +11,8 @@ $(document).ready(function () {
         let address = String.fromCharCode(cid) + rid;
         //   to set value of input type element => val set  
         $("#address-input").val(address);
+        let { rowId, colId } = getRCFromAddr(address);
+        $("#formula-input").val(db[rowId][colId].formula);
     })
 
 
@@ -146,8 +148,8 @@ $(document).ready(function () {
         for (let i = 0; i < cellObject.children.length; i++) {
             let childRc = cellObject.children[i];
             let cObj = db[childRc.rowId][childRc.colId];
-           let cAns= evaluate(cObj.formula);
-           updateCell(childRc.rowId,childRc.colId,cAns);
+            let cAns = evaluate(cObj.formula);
+            updateCell(childRc.rowId, childRc.colId, cAns);
         }
     }
 
