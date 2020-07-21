@@ -78,6 +78,9 @@ $(document).ready(function () {
         let rowId = $(this).attr("rid");
         let colId = $(this).attr("cid");
         let cellObject = db[rowId][colId];
+        if (cellObject.value == $(this).html()) {
+            return;
+        }
         if (cellObject.formula) {
             removeFormula(cellObject, rowId, colId);
         }
@@ -96,6 +99,14 @@ $(document).ready(function () {
         let cellAdddress = $("#address-input").val();
         let { rowId, colId } = getRCFromAddr(cellAdddress);
         let cellObject = db[rowId][colId];
+
+        if (cellObject.formula == $(this).val()) {
+            return;
+        }
+        // if (checkFormula(cellObject, formula) == false) {
+        //     console.log("Formula is invalid");
+        //     return;
+        // }
         if (cellObject.formula) {
             removeFormula(cellObject, rowId, colId);
         }
@@ -126,6 +137,7 @@ $(document).ready(function () {
         }
         console.log(formula);
         // evaluate the formula
+        // infix evaluation
         let ans = eval(formula);
         console.log(ans);
         return ans;
@@ -165,11 +177,10 @@ $(document).ready(function () {
             //     return !(rowId == elemRc.rowId && colId == elemRc.colId);
             // })
             // parentObj.children = newArr;
-
             let idx = parentObj.children.findIndex(function (elemRc) {
                 return (rowId == elemRc.rowId && colId == elemRc.colId);
             })
-            parentObj.children.splice(idx,1)
+            parentObj.children.splice(idx, 1)
         }
         cellObject.parents = [];
         cellObject.formula = "";
