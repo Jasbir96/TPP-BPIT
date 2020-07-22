@@ -15,6 +15,22 @@ $(document).ready(function () {
         $("#formula-input").val(db[rowId][colId].formula);
     })
 
+    $("#grid .cell").on("keyup", function () {
+        let height = $(this).height();
+        // console.log(height);
+        let rowId = $(this).attr("rid");
+        let lcArr = $("#left-col .cell");
+        let myCol = lcArr[rowId];
+        $(myCol).css("height", height);
+    })
+    $("#cell-container").on("scroll", function () {
+        let vS = $(this).scrollTop();
+        let hS = $(this).scrollLeft();
+        // console.log(vS + " " + hS);
+        $("#tl-cell,#top-row").css("top", vS);
+        $("#tl-cell,#left-col").css("left", hS);
+    })
+
 
     // **************New Open Save**************
     // New
@@ -38,7 +54,6 @@ $(document).ready(function () {
             db.push(row);
         }
     })
-
 
     $("#open").on("click", async function () {
         // it gives array of file Paths os selected file
