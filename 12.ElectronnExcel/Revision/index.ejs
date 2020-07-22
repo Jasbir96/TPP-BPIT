@@ -10,7 +10,7 @@
 <!-- <h1>First Electron App</h1> -->
 
 <body>
-    
+
     <!-- #menu.menu-container+#menu-options.menu-options+(#formula-container>(#address-input+#formula-input))+#cell-conatiner.cell-conatiner+#sheets.sheets -->
     <div id="menu-container" class="menu-container">
         <div id="File" class="menu">File</div>
@@ -22,6 +22,39 @@
             <div id="new">New</div>
             <div id="open">Open</div>
             <div id="save">Save</div>
+        </div>
+        <div id="Home-menu-options" class="menu-options">
+            <div id="formatting-col">
+                <div class="font-row">
+                    <select id="font-family">
+
+                        <option value="cursive">Cursive</option>
+                        <option value="arial">Arial</option>
+                        <option value="sans-serif">Sans-Serif</option>
+                        <option value="monospace">monospace</option>
+                        <option value="serif">serif</option>
+                    </select>
+                    <select id="font-size">
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="20">20</option>
+                        <option value="32">32</option>
+                    </select>
+                </div>
+                <div class="style-row">
+                    <button id="bold">B</button>
+                    <button id="underline">U</button>
+                    <button id="italic">I</button>
+                    <input type="color" id="b-color">
+                    <input type="color" id="font-color">
+                </div>
+            </div>
+            <div id="align-col">
+                <button id="left">L</button>
+                <button id="center">C</button>
+                <button id="right">R</button>
+            </div>
         </div>
     </div>
     <div id="formula-container" class="formula-container">

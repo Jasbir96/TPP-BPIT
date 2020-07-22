@@ -31,7 +31,12 @@ $(document).ready(function () {
         $("#tl-cell,#left-col").css("left", hS);
     })
 
-
+    $(".menu").on("click", function () {
+        let optionName = $(this).attr("id");
+        $(".menu-options").removeClass("active");
+        $(`#${optionName}-menu-options`).addClass("active");
+       
+    })
     // **************New Open Save**************
     // New
     $("#new").on("click", function () {
@@ -231,6 +236,7 @@ $(document).ready(function () {
     }
 
     function fn() {
+        $("#File").trigger("click");
         $("#new").trigger("click");
     }
     fn();
