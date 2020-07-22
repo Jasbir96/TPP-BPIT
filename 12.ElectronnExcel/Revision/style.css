@@ -25,6 +25,7 @@ padding:0px;
     justify-content: space-evenly;
     align-items: center;
     display: none;   
+    
 }
 .menu-options.active{
     display: flex;

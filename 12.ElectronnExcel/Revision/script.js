@@ -20,7 +20,6 @@ $(document).ready(function () {
             $("#bold").addClass("active")
         } else {
             $("#bold").removeClass("active")
-
         }
         if (cellObject.underline) {
             $("#underline").addClass("active")
@@ -33,7 +32,6 @@ $(document).ready(function () {
             $("#italic").removeClass("active")
         }
     })
-    
     $("#bold").on("click", function () {
         $(this).toggleClass("active");
         let { rowId, colId } = getRcFromELem(lsc);
@@ -52,10 +50,38 @@ $(document).ready(function () {
         $(this).toggleClass("active");
         let { rowId, colId } = getRcFromELem(lsc);
         let cellObject = db[rowId][colId];
-        $(lsc).css("font-style", cellObject.italic ? "none" : "italic");
+        $(lsc).css("font-style", cellObject.italic ? "normal" : "italic");
         cellObject.italic = !cellObject.italic;
     })
 
+    $("#font-family").on("change", function () {
+        let fFam = $(this).val();
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-family", fFam);
+        cellObject.fontFamily = fFam;
+    })
+    $("#font-size").on("change", function () {
+        let fSize = $(this).val();
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-size", fSize + "px");
+        cellObject.fontSize = fSize;
+    })
+    $("#b-color").on("change", function () {
+        let bColor = $(this).val();
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("background-color", bColor);
+        cellObject.bColor = bColor;
+    })
+    $("#font-color").on("change", function () {
+        let color = $(this).val();
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("color", color);
+        cellObject.color = color;
+    })
     $("#grid .cell").on("keyup", function () {
         let height = $(this).height();
         // console.log(height);
@@ -86,7 +112,7 @@ $(document).ready(function () {
             let allCellOfarow = $(allRows[i]).find(".cell");
             let row = [];
             for (let j = 0; j < allCellOfarow.length; j++) {
-                $(allCellOfarow[j]).html("");
+
                 let cell = {
                     value: "",
                     formula: "",
@@ -94,8 +120,15 @@ $(document).ready(function () {
                     parents: [],
                     bold: false,
                     underline: false,
-                    italic: false
+                    italic: false,
+                    fontSize: 12,
+                    fontFamily: "arial",
+                    bColor: "white",
+                    color: "black"
+
                 };
+                $(allCellOfarow[j]).html("");
+
                 row.push(cell);
             }
             db.push(row);
@@ -114,7 +147,24 @@ $(document).ready(function () {
         for (let i = 0; i < allRows.length; i++) {
             let allCellOfarow = $(allRows[i]).find(".cell");
             for (let j = 0; j < allCellOfarow.length; j++) {
-                $(allCellOfarow[j]).html(db[i][j].value);
+                let cellObject = db[i][j];
+                $(allCellOfarow[j]).html(cellObject.value);
+                // bold: false,
+                //     underline: false,
+                //     italic: false,
+                //     fontSize: 12,
+                //     fontFamily: "arial",
+                //     bColor: "white",
+                //     color: "black"
+
+                $(allCellOfarow[j]).css("bold", cellObject.bold ? "bold" : "normal");
+                $(allCellOfarow[j]).css("text-decoration", cellObject.underline ? "underline" : "none");
+                $(allCellOfarow[j]).css("font-style", cellObject.italic ? "italic" : "normal");
+                $(allCellOfarow[j]).css("font-size", cellObject.fontSize);
+                $(allCellOfarow[j]).css("font-family", cellObject.fontFamily);
+                $(allCellOfarow[j]).css("color", cellObject.color);
+                $(allCellOfarow[j]).css("background-color", cellObject.bColor);
+
             }
 
         }
