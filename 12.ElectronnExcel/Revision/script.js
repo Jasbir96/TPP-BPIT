@@ -3,6 +3,7 @@ const fs = require("fs");
 const dialog = require("electron").remote.dialog;
 $(document).ready(function () {
     let db;
+    let lsc;
     $("#grid .cell").on("click", function () {
         // perform 
         // action
@@ -12,7 +13,47 @@ $(document).ready(function () {
         //   to set value of input type element => val set  
         $("#address-input").val(address);
         let { rowId, colId } = getRCFromAddr(address);
-        $("#formula-input").val(db[rowId][colId].formula);
+        const cellObject = db[rowId][colId]
+        $("#formula-input").val(cellObject.formula);
+        lsc = this;
+        if (cellObject.bold) {
+            $("#bold").addClass("active")
+        } else {
+            $("#bold").removeClass("active")
+
+        }
+        if (cellObject.underline) {
+            $("#underline").addClass("active")
+        } else {
+            $("#underline").removeClass("active")
+        }
+        if (cellObject.italic) {
+            $("#italic").addClass("active")
+        } else {
+            $("#italic").removeClass("active")
+        }
+    })
+    
+    $("#bold").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-weight", cellObject.bold ? "normal" : "bold");
+        cellObject.bold = !cellObject.bold;
+    })
+    $("#underline").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("text-decoration", cellObject.underline ? "none" : "underline");
+        cellObject.underline = !cellObject.underline;
+    })
+    $("#italic").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRcFromELem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-style", cellObject.italic ? "none" : "italic");
+        cellObject.italic = !cellObject.italic;
     })
 
     $("#grid .cell").on("keyup", function () {
@@ -30,12 +71,10 @@ $(document).ready(function () {
         $("#tl-cell,#top-row").css("top", vS);
         $("#tl-cell,#left-col").css("left", hS);
     })
-
     $(".menu").on("click", function () {
         let optionName = $(this).attr("id");
         $(".menu-options").removeClass("active");
         $(`#${optionName}-menu-options`).addClass("active");
-       
     })
     // **************New Open Save**************
     // New
@@ -52,12 +91,17 @@ $(document).ready(function () {
                     value: "",
                     formula: "",
                     children: [],
-                    parents: []
+                    parents: [],
+                    bold: false,
+                    underline: false,
+                    italic: false
                 };
                 row.push(cell);
             }
             db.push(row);
         }
+        let allCells = $("#grid .cell");
+        $(allCells[0]).trigger("click");
     })
 
     $("#open").on("click", async function () {
@@ -234,7 +278,12 @@ $(document).ready(function () {
         }
         return obj
     }
+    function getRcFromELem(elem) {
+        let rowId = $(elem).attr("rid");
+        let colId = $(elem).attr("cid");
+        return { rowId, colId };
 
+    }
     function fn() {
         $("#File").trigger("click");
         $("#new").trigger("click");
