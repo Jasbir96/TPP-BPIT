@@ -22,10 +22,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.container{
-    height: calc(100vh - (2rem + 55px));
-    border: 1px solid green;
-}
+
 .btn-container{
     width: 11rem;
     /* border: 1px solid; */
@@ -35,7 +32,7 @@ body{
     align-items: center;
 }
 .btn{
-    display: block; 
+    /* display: block;  */
     border: none;
     background-color: rgb(156, 153, 153);
     height: 80%;
@@ -50,4 +47,22 @@ background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
 .tab-container{
     width: calc(100vw - 14rem);
     border: 1px solid;
+}
+.container{
+    height: calc(100vh - (2rem + 55px));
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+}
+.file-explorer{
+    width:30%;
+    height: 100%;
+    border: 1px solid;
+    
+}
+.main-container{
+    width:68%;
+    height: 100%;
+    background-color: rebeccapurple;
 }
