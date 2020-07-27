@@ -2,9 +2,12 @@ html,body{
     margin:0px;
     padding: 0px;
     background-color: rgb(29, 28, 28);
+    color:red;
 }
+/* universal selector */
 *{
     box-sizing: border-box;
+color: white;
 }
 body{
     height: 100vh;
@@ -14,10 +17,37 @@ body{
 }
 .top-bar{
     height: 55px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 .container{
     height: calc(100vh - (2rem + 55px));
     border: 1px solid green;
+}
+.btn-container{
+    width: 11rem;
+    /* border: 1px solid; */
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btn{
+    display: block; 
+    border: none;
+    background-color: rgb(156, 153, 153);
+    height: 80%;
+    width: 40%;
+    border-radius: 5px;
+}
+.new{
+color: black;
+background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+.tab-container{
+    width: calc(100vw - 14rem);
+    border: 1px solid;
 }
