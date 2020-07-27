@@ -1,0 +1,23 @@
+html,body{
+    margin:0px;
+    padding: 0px;
+    background-color: rgb(29, 28, 28);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width:100vw;
+    padding: 0 1rem;
+    padding-top: 1rem;
+}
+.top-bar{
+    height: 55px;
+    border: 1px solid blue;
+    margin-bottom: 1rem;
+}
+.container{
+    height: calc(100vh - (2rem + 55px));
+    border: 1px solid green;
+}
