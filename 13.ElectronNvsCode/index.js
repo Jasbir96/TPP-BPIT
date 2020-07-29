@@ -45,13 +45,13 @@ $(document).ready(async function () {
         if (!isFile) {
             return;
         }
-        
         let content = fs.readFileSync(src) + "";
         //    show in editor
         // console.log(content);
         myEditor.getModel().setValue(content);
         // how to set language in monaco editor
         let ext = src.split(".").pop();
+
         if (ext == "js") {
             ext = "javascript"
         }
