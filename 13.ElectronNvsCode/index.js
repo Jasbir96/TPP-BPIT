@@ -2,7 +2,7 @@ const $ = require("jquery");
 
 const path = require("path");
 const fs = require("fs");
-let myEditor;
+let myEditor, myMonaco;
 $(document).ready(async function () {
     myEditor = await createEditor();
     //    set editor content
@@ -45,11 +45,17 @@ $(document).ready(async function () {
         if (!isFile) {
             return;
         }
+        
         let content = fs.readFileSync(src) + "";
         //    show in editor
-        console.log(content);
+        // console.log(content);
         myEditor.getModel().setValue(content);
         // how to set language in monaco editor
+        let ext = src.split(".").pop();
+        if (ext == "js") {
+            ext = "javascript"
+        }
+        myMonaco.editor.setModelLanguage(myEditor.getModel(), ext);
     });
 })
 function createChildNode(src) {
@@ -95,6 +101,7 @@ function createEditor() {
                 language: 'javascript'
             });
             console.log("line number 100")
+            myMonaco = monaco;
             resolve(editor);
         });
     })
