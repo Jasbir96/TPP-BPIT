@@ -2,8 +2,12 @@ const $ = require("jquery");
 
 const path = require("path");
 const fs = require("fs");
-$(document).ready(function () {
-    createEditor();
+let myEditor;
+$(document).ready(async function () {
+    myEditor = await createEditor();
+    //    set editor content
+
+    // ***************************File explorer logic*****************************
     let src = process.cwd();
     let name = path.basename(src);
     let pObj = {
@@ -44,6 +48,8 @@ $(document).ready(function () {
         let content = fs.readFileSync(src) + "";
         //    show in editor
         console.log(content);
+        myEditor.getModel().setValue(content);
+        // how to set language in monaco editor
     });
 })
 function createChildNode(src) {
@@ -67,8 +73,8 @@ function createChildNode(src) {
     }
     return chArr
 }
+// npm install monaco-editor
 function createEditor() {
-
     const path = require('path');
     const amdLoader = require('./node_modules/monaco-editor/min/vs/loader.js');
     const amdRequire = amdLoader.require;
@@ -78,16 +84,21 @@ function createEditor() {
     });
     // workaround monaco-css not understanding the environment
     self.module = undefined;
-    amdRequire(['vs/editor/editor.main'], function () {
-        var editor = monaco.editor.create(document.querySelector('#code-editor'), {
-            value: [
-                'function x() {',
-                '\tconsole.log("Hello world!");',
-                '}'
-            ].join('\n'),
-            language: 'javascript'
+    return new Promise(function (resolve, reject) {
+        amdRequire(['vs/editor/editor.main'], function () {
+            var editor = monaco.editor.create(document.getElementById('code-editor'), {
+                value: [
+                    'function x() {',
+                    '\tconsole.log("Hello world!");',
+                    '}'
+                ].join('\n'),
+                language: 'javascript'
+            });
+            console.log("line number 100")
+            resolve(editor);
         });
-    });
+    })
+
 }
     // Event bubbling
     // $("#tree").on("click", function () {
