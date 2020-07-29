@@ -3,8 +3,6 @@ const $ = require("jquery");
 const path = require("path");
 const fs = require("fs");
 $(document).ready(function () {
-
-
     let src = process.cwd();
     let name = path.basename(src);
     let pObj = {
@@ -21,7 +19,9 @@ $(document).ready(function () {
             "check_callback": true,
             "data": chArr
         },
+        // when a directory is opened
     }).on("open_node.jstree", function (e, data) {
+        // console.log(data);
         let children = data.node.children;
         // console.log(children)
         for (let i = 0; i < children.length; i++) {
@@ -30,15 +30,20 @@ $(document).ready(function () {
             for (let j = 0; j < gcNodes.length; j++) {
                 // data array 
                 // console.log("inside gc")
-                console.log(children[i])
-                let isGcPresent = $('#tree').jstree(true).get_node(gcNodes[j].id);
-                if (isGcPresent) {
-                    return;
-                }
-                $("#tree").jstree().create_node(children[i], gcNodes[j],"first");
+                $("#tree").jstree().create_node(children[i], gcNodes[j], "last");
             }
         }
-    })
+    }).on("select_node.jstree", function (e, data) {
+        console.log("select event occured");
+        let src = data.node.id;
+        let isFile = fs.lstatSync(src).isFile();
+        if(!isFile){
+            return;
+        }
+        let content = fs.readFileSync(src) + "";
+        //    show in editor
+        console.log(content);
+    });
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
