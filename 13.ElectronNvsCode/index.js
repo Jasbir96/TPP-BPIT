@@ -3,6 +3,7 @@ const $ = require("jquery");
 const path = require("path");
 const fs = require("fs");
 $(document).ready(function () {
+    createEditor();
     let src = process.cwd();
     let name = path.basename(src);
     let pObj = {
@@ -37,7 +38,7 @@ $(document).ready(function () {
         console.log("select event occured");
         let src = data.node.id;
         let isFile = fs.lstatSync(src).isFile();
-        if(!isFile){
+        if (!isFile) {
             return;
         }
         let content = fs.readFileSync(src) + "";
@@ -65,6 +66,28 @@ function createChildNode(src) {
         chArr.push(chObj);
     }
     return chArr
+}
+function createEditor() {
+
+    const path = require('path');
+    const amdLoader = require('./node_modules/monaco-editor/min/vs/loader.js');
+    const amdRequire = amdLoader.require;
+    const amdDefine = amdLoader.require.define;
+    amdRequire.config({
+        baseUrl: './node_modules/monaco-editor/min'
+    });
+    // workaround monaco-css not understanding the environment
+    self.module = undefined;
+    amdRequire(['vs/editor/editor.main'], function () {
+        var editor = monaco.editor.create(document.querySelector('#code-editor'), {
+            value: [
+                'function x() {',
+                '\tconsole.log("Hello world!");',
+                '}'
+            ].join('\n'),
+            language: 'javascript'
+        });
+    });
 }
     // Event bubbling
     // $("#tree").on("click", function () {
