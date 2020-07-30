@@ -38,25 +38,18 @@ $(document).ready(async function () {
                 $("#tree").jstree().create_node(children[i], gcNodes[j], "last");
             }
         }
-    }).on("select_node.jstree", function (e, data) {
-        console.log("select event occured");
-        let src = data.node.id;
-        let isFile = fs.lstatSync(src).isFile();
-        if (!isFile) {
-            return;
-        }
-        let content = fs.readFileSync(src) + "";
-        //    show in editor
-        // console.log(content);
-        myEditor.getModel().setValue(content);
-        // how to set language in monaco editor
-        let ext = src.split(".").pop();
-
-        if (ext == "js") {
-            ext = "javascript"
-        }
-        myMonaco.editor.setModelLanguage(myEditor.getModel(), ext);
-    });
+    })
+        .on("select_node.jstree", function (e, data) {
+            console.log("select event occured");
+            let src = data.node.id;
+            let isFile = fs.lstatSync(src).isFile();
+            if (!isFile) {
+                return;
+            }
+            setData(src);
+            // set name on tab
+            createTab(src);
+        });
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
@@ -106,6 +99,46 @@ function createEditor() {
         });
     })
 
+}
+// dynamically 
+// callback 
+function createTab(src) {
+    let fName = path.basename(src);
+    $(".tab-container").append(`
+    <div class="tab" ><span onclick=handleClick(this) id=${src}>${fName}</span>
+    <i class="fas fa-times" onclick=handleClose(this) id=${src}></i>
+    </div>`);
+}
+
+function handleClick(elem) {
+    // console.log("clicked");
+    let src = $(elem).attr("id");
+    setData(src);
+}
+function handleClose(elem) {
+    console.log("closed");
+    // remove current tab 
+    $(elem).parent().remove();
+    //set content of first tab
+    // LRU cache 
+    let src = $($(".tab-container span")[0]).attr("id");
+    if (src) {
+        setData(src);
+    }
+
+}
+function setData(src) {
+    let content = fs.readFileSync(src) + "";
+    //    show in editor
+    // console.log(content);
+    myEditor.getModel().setValue(content);
+    // how to set language in monaco editor
+    let ext = src.split(".").pop();
+
+    if (ext == "js") {
+        ext = "javascript"
+    }
+    myMonaco.editor.setModelLanguage(myEditor.getModel(), ext);
 }
     // Event bubbling
     // $("#tree").on("click", function () {

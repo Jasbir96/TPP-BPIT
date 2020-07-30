@@ -96,4 +96,20 @@ justify-content: space-between;
 }
 #code-editor{
     height: 100%;
-}   
+} 
+  
+.tab{
+height: 80%;
+min-width:70px;
+background-color: rgb(56, 55, 55);
+margin-right:4px;
+}
+
+.tab-container{
+    display: flex;
+    align-items: center;
+}
+
+.fa-times{
+font-size:60%;
+}
