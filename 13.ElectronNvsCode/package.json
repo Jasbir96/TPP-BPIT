@@ -13,6 +13,8 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "jstree": "^3.3.10",
-    "monaco-editor": "^0.20.0"
+    "monaco-editor": "^0.20.0",
+    "node-pty": "^0.9.0",
+    "xterm": "^4.8.1"
   }
 }

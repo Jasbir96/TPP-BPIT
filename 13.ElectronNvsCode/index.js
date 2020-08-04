@@ -38,18 +38,49 @@ $(document).ready(async function () {
                 $("#tree").jstree().create_node(children[i], gcNodes[j], "last");
             }
         }
-    })
-        .on("select_node.jstree", function (e, data) {
-            console.log("select event occured");
-            let src = data.node.id;
-            let isFile = fs.lstatSync(src).isFile();
-            if (!isFile) {
-                return;
-            }
-            setData(src);
-            // set name on tab
-            createTab(src);
-        });
+    }).on("select_node.jstree", function (e, data) {
+        console.log("select event occured");
+        let src = data.node.id;
+        let isFile = fs.lstatSync(src).isFile();
+
+        if (!isFile) {
+            return;
+        }
+        setData(src);
+        // set name on tab
+        createTab(src);
+    });
+    const os = require('os');
+    const pty = require('node-pty');
+    // UI 
+   const Terminal = require('xterm').Terminal;
+    // Initialize node-pty with an appropriate shell
+    console.log()
+    const shell = process.env[os.platform() === 'win32' ? 'COMSPEC' : 'SHELL'];
+    // Magic
+    const ptyProcess = pty.spawn(shell, [], {
+        name: 'xterm-color',
+        cols: 80,
+        rows: 30,
+        cwd: process.cwd(),
+        env: process.env
+    });
+    // console.log(process.env);
+    // Initialize xterm.js and attach it to the DOM
+    const xterm = new Terminal();
+    // document
+    xterm.open(document.getElementById('terminal'));
+    // Setup communication between xterm.js and node-pty
+    xterm.onData(function (data) { 
+        // console.log("Command "+data);
+        ptyProcess.write(data) });
+    // Magic
+    
+    ptyProcess.on('data', function (data) {
+        xterm.write(data);
+    });
+
+
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
