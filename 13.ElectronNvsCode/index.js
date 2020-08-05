@@ -84,9 +84,24 @@ $(document).ready(async function () {
     ptyProcess.on('data', function (data) {
         xterm.write(data);
     });
-    
-    fitAddon.fit();
 
+    fitAddon.fit();
+    myMonaco.editor.defineTheme('myTheme', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [{ background: '#1e2024' }],
+        "colors": {
+            "editor.foreground": "#F8F8F8",
+            "editor.background": "#1e2024",
+            "editor.selectionBackground": "#DDF0FF33",
+            "editor.lineHighlightBackground": "#FFFFFF08",
+            "editorCursor.foreground": "#A7A7A7",
+            "editorWhitespace.foreground": "#FFFFFF40"
+        }
+    });
+    setTimeout(function () {
+        myMonaco.editor.setTheme('myTheme');
+    },10000);
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
@@ -122,13 +137,15 @@ function createEditor() {
     self.module = undefined;
     return new Promise(function (resolve, reject) {
         amdRequire(['vs/editor/editor.main'], function () {
+            
             var editor = monaco.editor.create(document.getElementById('code-editor'), {
                 value: [
                     'function x() {',
                     '\tconsole.log("Hello world!");',
                     '}'
                 ].join('\n'),
-                language: 'javascript'
+                language: 'javascript',
+                theme: "vs"
             });
             console.log("line number 100")
             myMonaco = monaco;
