@@ -86,7 +86,7 @@ $(document).ready(async function () {
     });
 
     fitAddon.fit();
-    myMonaco.editor.defineTheme('myTheme', {
+    myMonaco.editor.defineTheme('dark', {
         base: 'vs-dark',
         inherit: true,
         rules: [{ background: '#1e2024' }],
@@ -99,9 +99,34 @@ $(document).ready(async function () {
             "editorWhitespace.foreground": "#FFFFFF40"
         }
     });
-    setTimeout(function () {
-        myMonaco.editor.setTheme('myTheme');
-    },10000);
+    myMonaco.editor.defineTheme('light', {
+        "base": "vs",
+        "inherit": true,
+        rules: [{ background: '#1e2024' }],
+        "colors": {
+            "editor.foreground": "#3B3B3B",
+            "editor.background": "#FFFFFF",
+            "editor.selectionBackground": "#BAD6FD",
+            "editor.lineHighlightBackground": "#00000012",
+            "editorCursor.foreground": "#000000",
+            "editorWhitespace.foreground": "#BFBFBF"
+        }
+    });
+    let isDark = false;
+    $("#toggle").on("click", function () {
+        if (isDark) {
+            myMonaco.editor.setTheme('light');
+        } else {
+            myMonaco.editor.setTheme('dark');
+
+        }
+        isDark=!isDark;
+    })
+
+
+
+
+
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
@@ -137,7 +162,7 @@ function createEditor() {
     self.module = undefined;
     return new Promise(function (resolve, reject) {
         amdRequire(['vs/editor/editor.main'], function () {
-            
+
             var editor = monaco.editor.create(document.getElementById('code-editor'), {
                 value: [
                     'function x() {',
