@@ -52,5 +52,13 @@
  ### Puppeteer
     Go through official documentation it is the best
  ### JQuery
- * https://www.w3schools.com/jquery/default.asp
+  * https://www.w3schools.com/jquery/default.asp
     Finish Jquery Tutorial and html from here 
+  * http://youmightnotneedjquery.com/
+### Web
+* https://developer.mozilla.org/en-US/docs/Learn
+### OpenBoard
+* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+* https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+
