@@ -1,5 +1,5 @@
-const $ = require("jquery");
-
+const $ = jQuery=require("jquery");
+require("jquery-ui-dist/jquery-ui");
 const path = require("path");
 const fs = require("fs");
 let myEditor, myMonaco;
@@ -22,7 +22,11 @@ $(document).ready(async function () {
         // so that create works
         "core": {
             "check_callback": true,
-            "data": chArr
+            "data": chArr,
+            "themes": {
+                "icons": false
+            }
+
         },
         // when a directory is opened
     }).on("open_node.jstree", function (e, data) {
@@ -71,6 +75,8 @@ $(document).ready(async function () {
     const xterm = new Terminal();
     const fitAddon = new FitAddon();
     xterm.loadAddon(fitAddon);
+
+    xterm.setOption('theme', { background: 'rebeccapurple' });
     // Make the terminal's size and geometry fit the size of #terminal-container
     // document
     xterm.open(document.getElementById('terminal'));
@@ -118,15 +124,10 @@ $(document).ready(async function () {
             myMonaco.editor.setTheme('light');
         } else {
             myMonaco.editor.setTheme('dark');
-
         }
-        isDark=!isDark;
+        isDark = !isDark;
     })
-
-
-
-
-
+    $(".file-explorer").resizable();
 })
 function createChildNode(src) {
     let isDir = fs.lstatSync(src).isDirectory();
@@ -170,7 +171,7 @@ function createEditor() {
                     '}'
                 ].join('\n'),
                 language: 'javascript',
-                theme: "vs"
+                theme: "vs-dark"
             });
             console.log("line number 100")
             myMonaco = monaco;
