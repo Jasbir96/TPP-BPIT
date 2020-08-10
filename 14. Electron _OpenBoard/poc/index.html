@@ -5,13 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
 </head>
 
 <body>
-    <input type="text">
+    <!-- <input type="text">
     <ul class="shopping-cart"></ul>
     <button class="click-btn"> Click Me</button>
-    <script src="index.js"></script>
+    <script src="index.js"></script> -->
+    <!-- Drawing board -->
+    <canvas class="board"></canvas>
+    <script>
+        let board = document.querySelector(".board");
+        board.height = window.innerHeight;
+        board.width = window.innerWidth;
+        //  2d , 3d ,Webgl
+        let ctx = board.getContext("2d");
+        // tool
+        // console.log(ctx);
+        // to 
+        ctx.fillStyle = "green";
+        // adjust width of stroke
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "purple";
+        //  x, y , width ,height
+        // ctx.fillRect(100, 100, 100, 100);
+        // ctx.strokeRect(100, 100, 150, 100);
+        //    a new path starts
+        // Path
+        ctx.beginPath();
+        //  move without drwaing
+        // sb-1
+        ctx.moveTo(50, 100);
+        // connect to last moveTo
+        ctx.lineTo(100, 200);
+        //    sb-2
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+        ctx.closePath();
+        //  new Path
+        ctx.beginPath();
+        ctx.moveTo(250, 100);
+        ctx.lineTo(300, 200);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+
+        // ctx.fill()
+        // function degToRad(degrees) {
+        //     return degrees * Math.PI / 180;
+        // };
+        // ctx.fillStyle = 'yellow';
+        // ctx.beginPath();
+        // ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+        // ctx.lineTo(200, 106);
+        // ctx.stroke();
+        // ctx.fill();
+
+    </script>
+
+
 </body>
 
 </html>

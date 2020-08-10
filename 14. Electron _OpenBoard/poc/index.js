@@ -8,7 +8,6 @@ p.innerText = "Dynamically added Para";
 p.style.backgroundColor = "red";
 // add as children to a node
 body.appendChild(p);
-
 let createBtn = document.querySelector(".click-btn");
 // to add event listener
 createBtn.addEventListener("click", function () {
