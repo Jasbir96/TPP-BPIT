@@ -8,6 +8,7 @@ height: 90%;
 width:15%;
 background-color: yellow;
 }
+
 .tool-panel{
 height:90%;
 width:80%;
@@ -17,9 +18,42 @@ justify-content: center;
 }
 .tool{
 height: 90%;;
-}
-.tool-options{
+position: relative;
 }
 .tool-img{
     height: 90%;
+}
+.tool-options{
+    position: absolute;
+    top: 75px;
+    left: -61px;
+    background: yellow;
+    height: 6rem;
+    width: 9rem;
+}
+.slider{
+    height: 38%;
+    border: 1px solid;
+}
+.colors{
+    height: 62%;
+    background: gainsboro;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.color{
+    height: 63%;
+    width: 26%;
+    border-radius: 50%;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+
+}
+.green{
+    background-color: green;
 }
