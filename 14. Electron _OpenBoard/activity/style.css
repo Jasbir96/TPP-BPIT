@@ -1,0 +1,25 @@
+.tool-bar{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+.hamburger{
+height: 90%;
+width:15%;
+background-color: yellow;
+}
+.tool-panel{
+height:90%;
+width:80%;
+background-color: lightcoral;
+display: flex;
+justify-content: center;
+}
+.tool{
+height: 90%;;
+}
+.tool-options{
+}
+.tool-img{
+    height: 90%;
+}

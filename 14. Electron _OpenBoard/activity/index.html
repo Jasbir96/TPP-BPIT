@@ -16,6 +16,7 @@
             padding: 0px;
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,6 +25,20 @@
     <button class="click-btn"> Click Me</button>
     <script src="index.js"></script> -->
     <!-- Drawing board -->
+    <div class="tool-bar">
+        <div class="hamburger"></div>
+        <div class="tool-panel">
+            <div class="tool">
+                <img src="./NewIcons/Black_Pencil.svg" alt="" class="tool-img" id="pencil"
+                    onclick="handleTool('pencil')">
+                <div class="tool-options"></div>
+            </div>
+            <div class="tool">
+                <img src="./NewIcons/Eraser.svg" alt="" class="tool-img" id="eraser" onclick="handleTool('eraser')">;
+                <div class="tool-options"></div>
+            </div>
+        </div>
+    </div>
     <canvas class="board"></canvas>
     <script>
         let board = document.querySelector(".board");
@@ -31,7 +46,13 @@
         board.width = window.innerWidth;
         //  2d , 3d ,Webgl
         let ctx = board.getContext("2d");
+        window.addEventListener("resize", function () {
+            board.height = window.innerHeight;
+            board.width = window.innerWidth;
+            // redraw=> redraw
+        })
     </script>
+    <script src="tools.js"></script>
     <script src="canavs.js"></script>
 
 </body>
@@ -65,7 +86,6 @@
         // ctx.lineTo(300, 200);
         // ctx.strokeStyle = "red";
         // ctx.stroke();
-
         // ctx.fill()
         // function degToRad(degrees) {
         //     return degrees * Math.PI / 180;
