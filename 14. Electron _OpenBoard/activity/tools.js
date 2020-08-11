@@ -25,6 +25,8 @@ function handleTool(tool) {
         }
     } else if (tool == "sticky") {
         createSticky();
+    } else if (tool == "upload") {
+        uploadFile();
     }
 }
 function changeColor(color) {

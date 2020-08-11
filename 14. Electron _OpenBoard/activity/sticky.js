@@ -58,6 +58,7 @@ function createSticky() {
             let finalY = e.clientY;
             let dX = finalX - initialX;
             let dY = finalY - initialY;
+            //  
             let { top, left } = stickyPad.getBoundingClientRect();
             stickyPad.style.top = top + dY + "px";
             stickyPad.style.left = left + dX + "px";
