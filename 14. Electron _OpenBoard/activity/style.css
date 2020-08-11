@@ -8,7 +8,6 @@ height: 90%;
 width:15%;
 background-color: yellow;
 }
-
 .tool-panel{
 height:90%;
 width:80%;
@@ -30,6 +29,8 @@ position: relative;
     background: yellow;
     height: 6rem;
     width: 9rem;
+    
+    display: none;
 }
 .slider{
     height: 38%;
@@ -56,4 +57,7 @@ position: relative;
 }
 .green{
     background-color: green;
+}
+.show{
+    display: block;
 }

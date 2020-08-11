@@ -31,22 +31,24 @@
             <div class="tool">
                 <img src="./NewIcons/Black_Pencil.svg" alt="" class="tool-img" id="pencil"
                     onclick="handleTool('pencil')">
-                <div class="tool-options">
+                <div class="tool-options" id="pencil-options">
                     <div class="slider">
-                        <input type="range" name="" id="">
+                        <input type="range" max='50' min='4' value='5' step='1'>
                     </div>
                     <div class="colors">
-                        <div class="color red"></div>
-                        <div class="color green"></div>
-                        <div class="color blue"></div>
+                        <div class="color red" onclick="changeColor('red')"></div>
+                        <div class="color green" onclick="changeColor('green')"></div>
+                        <div class="color blue" onclick="changeColor('blue')"></div>
                     </div>
 
                 </div>
             </div>
             <div class="tool">
-                <img src="./NewIcons/Eraser.svg" alt="" class="tool-img" id="eraser" onclick="handleTool('eraser')">;
-                <div class="tool-options">
-                    <div class="slider"></div>
+                <img src="./NewIcons/Eraser.svg" alt="" class="tool-img" id="eraser" onclick="handleTool('eraser')">
+                <div class="tool-options" id="eraser-options">
+                    <div class="slider">
+                        <input type="range" name="" max='50' min='4' value='5' step='1'>
+                    </div>
                 </div>
             </div>
         </div>
