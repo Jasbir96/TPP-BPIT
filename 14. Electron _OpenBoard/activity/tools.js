@@ -1,6 +1,6 @@
 ctx.lineWidth = 5;
-ctx.lineCap="round";
-ctx.lineJoin='round';
+ctx.lineCap = "round";
+ctx.lineJoin = 'round';
 let activeTool = 'pencil';
 let pencil = document.querySelector("#pencil");
 let eraser = document.querySelector("#eraser");
@@ -23,13 +23,13 @@ function handleTool(tool) {
             activeTool = "eraser";
             pencilOptions.classList.remove("show");
         }
-
+    } else if (tool == "sticky") {
+        createSticky();
     }
 }
 function changeColor(color) {
     ctx.strokeStyle = color;
 }
-
 let sliders = document.querySelectorAll("input[type='range']");
 for (let i = 0; i < sliders.length; i++) {
     sliders[i].addEventListener("change", function () {
@@ -37,3 +37,4 @@ for (let i = 0; i < sliders.length; i++) {
         ctx.lineWidth = width;
     })
 }
+

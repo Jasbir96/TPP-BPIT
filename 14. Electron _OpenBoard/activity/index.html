@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
     <style>
         * {
@@ -51,9 +52,15 @@
                     </div>
                 </div>
             </div>
+            <div class="tool">
+                <img src="./NewIcons/StickyNote.svg" alt="" class="tool-img" id="sticky" onclick="handleTool('sticky')">
+
+            </div>
         </div>
     </div>
+    </div>
     <canvas class="board"></canvas>
+ 
     <script>
         let board = document.querySelector(".board");
         board.height = window.innerHeight;
@@ -67,7 +74,9 @@
         })
     </script>
     <script src="tools.js"></script>
+    <script src="sticky.js"></script>
     <script src="canavs.js"></script>
+
 
 </body>
 

@@ -61,3 +61,41 @@ position: relative;
 .show{
     display: block;
 }
+.stickyPad{
+    height: 14rem;
+    width: 14rem;
+    /* different layer */
+    /* align itself according to html page origin */
+    position: absolute;
+    top: 40vh;
+    left: 30vw;
+    background-color: tan;
+}
+.nav-bar{
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 11px;
+}
+
+.close,.minimize{
+    height: 46%;
+    width: 10%;
+    margin-right: 5px;
+    border-radius: 56%;
+}
+.close{
+    background: red;
+}
+.minimize{
+    background: green;
+}
+
+.textbox{
+    height: 80%;
+}
+.textbox textarea{
+    height: 100%;
+    width: 100%;
+}
