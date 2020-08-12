@@ -29,6 +29,8 @@ function handleTool(tool) {
         uploadFile();
     } else if (tool == "undo") {
         undoLast();
+    }else if(tool=="redo"){
+        redoLast();
     }
 }
 function changeColor(color) {

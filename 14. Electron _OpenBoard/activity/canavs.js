@@ -1,8 +1,10 @@
 // press mouse
 let isPenDown = false;
 let undoArr = [];
+let redoArr = [];
 board.addEventListener("mousedown", function (e) {
     // begin path
+
     ctx.beginPath();
     // move to mouse pointers location
     let x = e.clientX;
@@ -57,9 +59,20 @@ function getLocation() {
 }
 function undoLast() {
     //  pop the last point
-    if (undoArr.length > 0) {
+    if (undoArr.length >= 2) {
         //  lines 
-        undoArr.pop();
+        console.log(undoArr);
+        for (let i = undoArr.length - 1; i > 0; i--) {
+            console.log(undoArr[i]);
+            let  id = undoArr[i].id;
+            if (id == "md") {
+                redoArr.push(undoArr.pop());
+                break;
+            } else {
+                // undoArr.pop();
+                redoArr.push(undoArr.pop());
+            }
+        }
         //  clear canvas=> 
         ctx.clearRect(0, 0, board.width, board.height);
         // redraw
@@ -67,6 +80,24 @@ function undoLast() {
     }
 }
 
+function redoLast() {
+    if (redoArr.length >= 2) {
+        //  lines 
+        for (let i = redoArr.length - 1; i > 0; i--) {
+            let { id } = redoArr[i];
+            if (id == "md") {
+                undoArr.push(redoArr.pop());
+                break;
+            } else {
+                undoArr.push(redoArr.pop());
+            }
+        }
+        //  clear canvas=> 
+        ctx.clearRect(0, 0, board.width, board.height);
+        // redraw
+        redraw();
+    }
+}
 function redraw() {
     for (let i = 0; i < undoArr.length; i++) {
         let { x, y, id, color, width } = undoArr[i];
