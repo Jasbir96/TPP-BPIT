@@ -42,3 +42,6 @@ for (let i = 0; i < sliders.length; i++) {
     })
 }
 
+
+// let newArr = [...oldArr]; => values are copied
+// let newArr = oldArr;=> address copy
