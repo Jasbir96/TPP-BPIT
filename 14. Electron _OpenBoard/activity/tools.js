@@ -7,6 +7,7 @@ let eraser = document.querySelector("#eraser");
 let pencilOptions = document.querySelector("#pencil-options");
 let eraserOptions = document.querySelector("#eraser-options");
 function handleTool(tool) {
+
     if (tool == "pencil") {
         if (activeTool == "pencil") {
             pencilOptions.classList.add("show");
@@ -29,8 +30,10 @@ function handleTool(tool) {
         uploadFile();
     } else if (tool == "undo") {
         undoLast();
-    }else if(tool=="redo"){
+    } else if (tool == "redo") {
         redoLast();
+    } else if (tool == "download") {
+        downloadBoard();
     }
 }
 function changeColor(color) {

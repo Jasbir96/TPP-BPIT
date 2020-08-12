@@ -64,14 +64,19 @@ position: relative;
 .stickyPad{
     height: 14rem;
     width: 14rem;
+    min-width:10rem;
+    min-height: 10rem;
     /* different layer */
     /* align itself according to html page origin */
     position: absolute;
     top: 40vh;
     left: 30vw;
     background-color: tan;
+    resize:both;
+    overflow: auto;
 }
 .nav-bar{
+    
     height: 20%;
     display: flex;
     justify-content: flex-end;

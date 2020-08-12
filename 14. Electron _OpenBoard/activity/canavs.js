@@ -62,17 +62,19 @@ function undoLast() {
     if (undoArr.length >= 2) {
         //  lines 
         console.log(undoArr);
-        for (let i = undoArr.length - 1; i > 0; i--) {
+        let tempArr = []
+        for (let i = undoArr.length - 1; i >= 0; i--) {
             console.log(undoArr[i]);
-            let  id = undoArr[i].id;
+            let id = undoArr[i].id;
             if (id == "md") {
-                redoArr.push(undoArr.pop());
+                tempArr.unshift(undoArr.pop());
                 break;
             } else {
                 // undoArr.pop();
-                redoArr.push(undoArr.pop());
+                tempArr.unshift(undoArr.pop());
             }
         }
+        redoArr.push(tempArr);
         //  clear canvas=> 
         ctx.clearRect(0, 0, board.width, board.height);
         // redraw
@@ -81,16 +83,11 @@ function undoLast() {
 }
 
 function redoLast() {
-    if (redoArr.length >= 2) {
+    if (redoArr.length > 0) {
         //  lines 
-        for (let i = redoArr.length - 1; i > 0; i--) {
-            let { id } = redoArr[i];
-            if (id == "md") {
-                undoArr.push(redoArr.pop());
-                break;
-            } else {
-                undoArr.push(redoArr.pop());
-            }
+        let undoPath = redoArr.pop();
+        for (let i = 0; i < undoPath.length; i++) {
+            undoArr.push(undoPath[i]);
         }
         //  clear canvas=> 
         ctx.clearRect(0, 0, board.width, board.height);
