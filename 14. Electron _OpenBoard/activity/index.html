@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
     <style>
         * {
@@ -58,14 +57,14 @@
             <div class="tool">
                 <img src="./NewIcons/Photo.svg" alt="" class="tool-img" id="upload" onclick="handleTool('upload')">
                 <input type="file" name="" id="acceptImg" style="display: none;">
-
             </div>
-
+            <div class="tool">
+                <img src="./NewIcons/undo.svg" alt="" class="tool-img" id="upload" onclick="handleTool('undo')">
+            </div>
         </div>
     </div>
     </div>
     <canvas class="board"></canvas>
-
     <script>
         let board = document.querySelector(".board");
         board.height = window.innerHeight;
@@ -78,12 +77,11 @@
             // redraw=> redraw
         })
     </script>
+    <script src="utility.js"></script>
     <script src="tools.js"></script>
     <script src="sticky.js"></script>
     <script src="img.js"></script>
     <script src="canavs.js"></script>
-
-
 </body>
 
 </html>

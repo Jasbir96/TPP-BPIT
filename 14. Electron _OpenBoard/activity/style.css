@@ -94,8 +94,13 @@ position: relative;
 
 .textbox{
     height: 80%;
+    width:100%;
 }
 .textbox textarea{
     height: 100%;
     width: 100%;
+}
+.upload-img{
+    height:100%;
+    width:100%
 }

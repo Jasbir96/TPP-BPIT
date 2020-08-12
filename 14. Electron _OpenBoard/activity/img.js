@@ -6,8 +6,10 @@ function uploadFile() {
         let imgObj = imgInput.files[0];
         // console.log(imgObj);
         let imgLink = URL.createObjectURL(imgObj);
+        let textBox = createBox();
         let img = document.createElement("img");
+        img.setAttribute("class","upload-img")
         img.src = imgLink;
-        document.body.appendChild(img);
+        textBox.appendChild(img);
     })
 }

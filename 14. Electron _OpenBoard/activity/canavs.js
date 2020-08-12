@@ -11,6 +11,7 @@ board.addEventListener("mousedown", function (e) {
     ctx.moveTo(x, y);
     console.log("Mouse down")
     isPenDown = true;
+    // mouse down
 })
 // on move
 board.addEventListener("mousemove", function (e) {
@@ -24,6 +25,7 @@ board.addEventListener("mousemove", function (e) {
         ctx.lineTo(x, y);
         // stroke
         ctx.stroke();
+        // mouse move
     }
 })
 window.addEventListener("mouseup", function () {
@@ -36,3 +38,10 @@ function getLocation() {
     let { top } = board.getBoundingClientRect();
     return top;
 }
+function undoLast() {
+    //  pop the last point
+    //  clear canvas=> 
+    ctx.clearRect(0, 0, board.width, board.height);
+    // redraw
+}
+

@@ -27,6 +27,8 @@ function handleTool(tool) {
         createSticky();
     } else if (tool == "upload") {
         uploadFile();
+    } else if (tool == "undo") {
+        undoLast();
     }
 }
 function changeColor(color) {
