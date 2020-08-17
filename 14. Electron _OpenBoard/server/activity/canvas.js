@@ -23,6 +23,7 @@ board.addEventListener("mousedown", function (e) {
         width: ctx.lineWidth
     }
     undoArr.push(mdp);
+    //  point => realtime draw 
 })
 // on move
 board.addEventListener("mousemove", function (e) {

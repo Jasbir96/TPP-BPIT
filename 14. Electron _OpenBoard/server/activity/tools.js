@@ -1,3 +1,4 @@
+
 ctx.lineWidth = 5;
 ctx.lineCap = "round";
 ctx.lineJoin = 'round';
@@ -48,7 +49,8 @@ for (let i = 0; i < sliders.length; i++) {
         ctx.lineWidth = width;
     })
 }
-
-
+socket.on("rColorChange", function (color) {
+    ctx.strokeStyle = color;
+})
 // let newArr = [...oldArr]; => values are copied
 // let newArr = oldArr;=> address copy

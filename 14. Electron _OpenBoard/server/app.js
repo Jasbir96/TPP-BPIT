@@ -13,6 +13,8 @@ socketServer.on("connection", function (socket) {
     // listener=> recieve
     socket.on("colorChange", function (color) {
         console.log(color);
+        
+        socket.broadcast.emit('rColorChange', color);
     })
 })
 //  tcp => uniquely identify server on a machine
