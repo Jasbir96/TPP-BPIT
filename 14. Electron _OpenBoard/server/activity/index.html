@@ -75,7 +75,7 @@
         let board = document.querySelector(".board");
         board.height = window.innerHeight;
         board.width = window.innerWidth;
-        //  2d , 3d ,Webgl
+        //2d , 3d ,Webgl
         let ctx = board.getContext("2d");
         window.addEventListener("resize", function () {
             board.height = window.innerHeight;
@@ -83,13 +83,17 @@
             // redraw=> redraw
         })
     </script>
+    <!-- client -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.js"></script>
+   <script>
+       const socket=io.connect("http://localhost:3000");
+   </script>
     <script src="utility.js"></script>
     <script src="tools.js"></script>
     <script src="sticky.js"></script>
     <script src="img.js"></script>
-    <script src="canavs.js"></script>
+    <script src="canvas.js"></script>
 </body>
-
 </html>
 <!-- // tool
         // console.log(ctx);

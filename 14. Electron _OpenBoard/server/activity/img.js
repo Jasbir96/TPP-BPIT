@@ -13,7 +13,6 @@ function uploadFile() {
         textBox.appendChild(img);
     })
 }
-
 function downloadBoard() {
     //  create an anchor
     // e.preventDefault();

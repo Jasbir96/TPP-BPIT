@@ -81,7 +81,6 @@ function undoLast() {
         redraw();
     }
 }
-
 function redoLast() {
     if (redoArr.length > 0) {
         //  lines 
