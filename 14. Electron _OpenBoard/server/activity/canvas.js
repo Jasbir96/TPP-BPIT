@@ -1,3 +1,4 @@
+
 // press mouse
 let isPenDown = false;
 let undoArr = [];
@@ -23,7 +24,8 @@ board.addEventListener("mousedown", function (e) {
         width: ctx.lineWidth
     }
     undoArr.push(mdp);
-    //  point => realtime draw 
+    //  point => realtime draw
+    socket.emit("md", mdp);
 })
 // on move
 board.addEventListener("mousemove", function (e) {
@@ -46,6 +48,7 @@ board.addEventListener("mousemove", function (e) {
             width: ctx.lineWidth
         }
         undoArr.push(mmp);
+        socket.emit("mm", mmp);
     }
 })
 window.addEventListener("mouseup", function () {
