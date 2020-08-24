@@ -263,7 +263,6 @@ $(document).ready(
                     fParent.downstream.push({
                         rowId, colId
                     })
-
                     cellObject.upstream.push({
                         rowId: parentRc.rowId,
                         colId: parentRc.colId

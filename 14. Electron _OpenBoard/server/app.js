@@ -5,6 +5,7 @@ const app = express();
 const httpServer = require("http").createServer(app);
 const socketServer = require("socket.io")(httpServer);
 // const path = require("path");
+// /client
 app.use(express.static("activity"));
 socketServer.on("connection", function (socket) {
     console.log("New client connected")

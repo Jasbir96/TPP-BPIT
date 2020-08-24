@@ -5,6 +5,7 @@ function uploadFile() {
     imgInput.addEventListener("change", function () {
         let imgObj = imgInput.files[0];
         // console.log(imgObj);
+        // img => link 
         let imgLink = URL.createObjectURL(imgObj);
         let textBox = createBox();
         let img = document.createElement("img");

@@ -12,7 +12,6 @@ html,body{
 .ib{
     display: inline-block;
 }
-
 /* Menu */
 .menu{
     height: 22px;
@@ -111,7 +110,7 @@ border: 1px solid;
     min-width: 87px;
     border: 1px solid teal;
     text-align: center;
-min-height: 25px;
+    min-height: 25px;
 }
 /* .col{
     height: 25px;
