@@ -62,3 +62,22 @@
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
 * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
 * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
+#### Openboard
+  *  Canvas :
+      * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+      * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+  * Document API:  https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+  *  Files: 
+    * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Using_object_URLs_to_display_images
+    * https://stackoverflow.com/questions/12796513/html5-canvas-to-png-file
+  * Event Reference : https://developer.mozilla.org/en-US/docs/Web/Events
+  *  Socketio(Ise Pakka dekhna ) : https://www.youtube.com/watch?v=8ARodQ4Wlf4
+  *  Packaging : https://www.christianengvall.se/electron-packager-tutorial/  
+#### Extensions
+  * https://developer.chrome.com/extensions/overview
+  * https://developer.chrome.com/extensions/getstarted
+  * https://developer.chrome.com/extensions/messaging
+  * https://developer.chrome.com/extensions/tabs
+  * https://developer.chrome.com/extensions/storage
+**Videos** 
+* https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bL9VOMT65ahNEri9uqLWfS
