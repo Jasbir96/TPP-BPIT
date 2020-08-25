@@ -2,20 +2,28 @@ let blockedSites = [];
 // listener 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        console.log(request);
+        // console.log(request);
+        if (request == "getlist") {
+            if (blockedSites.length > 0) {
+                return sendResponse(blockedSites);
+            } else {
+                return sendResponse([])
+            }
+        }
         blockedSites.push({ site: request, time: 10 });
-        console.log(blockedSites);
+        // console.log(blockedSites);
         // console.log(sender);
         // if (request.greeting == "hello") {
         //     console.log("Recieved from popup");
         // }
 
-        sendResponse("Hello from content");
+        // ("Hello from content");
         //  check every second
         // relplaceImg()
     })
 
 async function init() {
+
     if (blockedSites.length > 0) {
         // query => current tab 
         // query for current tab
@@ -26,11 +34,15 @@ async function init() {
             for (let i = 0; i < blockedSites.length; i++) {
                 let isMatching = cTabUrl.includes(blockedSites[i].site);
                 if (isMatching) {
+
+                    chrome.browserAction.setBadgeText({ text: blockedSites[i].time + "" });
                     blockedSites[i].time--;
-                    console.log("time remaining  "+ blockedSites[i].time);
+                    console.log("time remaining  " + blockedSites[i].time);
                     if (blockedSites[i].time <= 0) {
                         // close current tab
-                        console.log("closed"+ blockedSites[i].site);
+                        await closeTab(tab.id);
+                        console.log("closed" + blockedSites[i].site);
+                        chrome.browserAction.setBadgeText({ text: "" });
                     }
                 }
 
@@ -41,7 +53,8 @@ async function init() {
 }
 function getCurrentTab() {
     return new Promise(function (resolve, reject) {
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.query({ active: true, 
+            currentWindow: true }, function (tabs) {
             resolve(tabs[0]);
         })
     })
@@ -50,3 +63,11 @@ function getCurrentTab() {
 setInterval(init, 1000);
 
 
+
+function closeTab(id) {
+    return new Promise(function (resolve, reject) {
+        chrome.tabs.remove(id, function () {
+            resolve();
+        });
+    })
+}
