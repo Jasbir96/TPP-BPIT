@@ -2,6 +2,7 @@
 const button = document.querySelector(".btn");
 const input = document.querySelector("input");
 const ul = document.querySelector("ul");
+
 button.addEventListener("click", async function () {
     let toBeBLocked = input.value;
     if (toBeBLocked) {
@@ -23,6 +24,7 @@ button.addEventListener("click", async function () {
         input.value = "";
     }
 })
+
 function sendTobackground(message) {
     return new Promise(function (resolve, reject) {
         chrome.runtime.sendMessage(message, function (response) {
