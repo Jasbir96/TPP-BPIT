@@ -5,5 +5,26 @@
         "email": "abc@gmail.com",
         "user_id": "steve114",
         "password": "12345678"
+    },
+    {
+        "name": "Steve",
+        "age": 23,
+        "email": "12345678",
+        "user_id": "steve114",
+        "password": "12345678"
+    },
+    {
+        "name": "Dave",
+        "age": 23,
+        "email": "12345678",
+        "user_id": "Dave114",
+        "password": "12345678"
+    },
+    {
+        "name": "Jhon",
+        "age": 23,
+        "email": "12345678",
+        "user_id": "Jhon114",
+        "password": "12345678"
     }
 ]
