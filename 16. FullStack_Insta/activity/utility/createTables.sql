@@ -3,8 +3,9 @@
 -- 3. create sql script 
 -- 4. go back to mysql 
         -- type source sqlscript path 
+        -- to check=> show tables
 CREATE TABLE IF NOT EXISTS user(
-    uid VARCHAR(32) PRIMARY KEY,
+    uid VARCHAR(80) PRIMARY KEY,
     handle VARCHAR(30) NOT NULL UNIQUE,
     email_id VARCHAR(50) UNIQUE,
     phone BIGINT(10) UNIQUE,

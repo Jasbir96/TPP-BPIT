@@ -1,3 +1,4 @@
+const express=require("express");
 const userRouter = new express.Router();
 let { createUser, updateUser, deleteUser, getUser } = require("../controller/userController");
 // user routes

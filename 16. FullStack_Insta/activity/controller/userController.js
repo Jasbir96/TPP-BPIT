@@ -1,19 +1,24 @@
 let userDB = require("../model/user.json");
-function createUser(req, res) {
-    let user = req.body;
-    // db Save
-    // console.log(user);
-    // if a new entry is created on server
-    // memory -> ram
-    userDB.push(user);
-    fs.writeFileSync(path.join(__dirname,
-        "user.json"),
-        JSON.stringify(userDB));
-    //    res status code server send 
-    res.status(201).json({
-        success: "successfull",
-        user: user
-    })
+let userModel = require("../model/userModel");
+async function createUser(req, res) {
+    try {
+        let ndbuser = await userModel.create(req.body);
+        // db Save
+        // console.log(user);
+        // if a new entry is created on server
+        // memory -> ram
+        //    res status code server send 
+        res.status(201).json({
+            success: "successfull",
+            user: ndbuser
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: "failure",
+            "message": err.message
+        })
+    }
+
 }
 function getUser(req, res) {
     let { user_id } = req.params;
@@ -85,6 +90,6 @@ function deleteUser(req, res) {
     })
 }
 module.exports.createUser = createUser;
-module.exports.updateUser = updateUser; 
+module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
