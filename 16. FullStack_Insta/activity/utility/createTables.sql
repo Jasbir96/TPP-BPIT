@@ -1,3 +1,8 @@
+-- 1. GO to mysql client
+-- 2. create database  insta_pp;
+-- 3. create sql script 
+-- 4. go back to mysql 
+        -- type source sqlscript path 
 CREATE TABLE IF NOT EXISTS user(
     uid VARCHAR(32) PRIMARY KEY,
     handle VARCHAR(30) NOT NULL UNIQUE,
