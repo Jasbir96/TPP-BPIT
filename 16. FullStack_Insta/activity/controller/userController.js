@@ -15,7 +15,6 @@ function createUser(req, res) {
         user: user
     })
 }
-
 function getUser(req, res) {
     let { user_id } = req.params;
     let user;
@@ -86,6 +85,6 @@ function deleteUser(req, res) {
     })
 }
 module.exports.createUser = createUser;
-module.exports.updateUser = updateUser;
+module.exports.updateUser = updateUser; 
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;

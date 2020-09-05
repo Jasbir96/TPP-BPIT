@@ -40,16 +40,9 @@ app.use(function (req, res, next) {
 // localhost:3000/api/users/user_id
 app.use("/api/users", userRouter);
 app.use("/api/post", postRouter);
-
-
-
 // ****************************users********************
 // user Route Handlers
-
 // POST Route handlers
-
-
-
 // app.get("/api/users/:user_id", getUser)
 // // update => PATCH
 // // client will your id in url and data to update in req.body
@@ -57,8 +50,6 @@ app.use("/api/post", postRouter);
 // app.patch("/api/users/:user_id", updateUser)
 // // search and delete 
 // app.delete("/api/users/:user_id", deleteUser)
-
-
 // ********************POST***********************
 
 // localhost:3000/api/users
