@@ -4,11 +4,11 @@ const { v4: uuidv4 } = require('uuid');
 //  db => model , authentication
 const create = function (userobj) {
     // create user in db
+    // google / facebook 
     userobj.uid = uuidv4();
-
     // validation=> extra value 
     return new Promise(function (resolve, reject) {
-        db.query('INSERT INTO user SET ?', userobj, function (err, result) {
+        db.query('INSERT INTO user SET ?',  userobj, function (err, result) {
             // Neat!
             if (err) {
                 reject(err)
@@ -19,8 +19,19 @@ const create = function (userobj) {
     })
 
 }
-const getById = function (id, selectionobj) {
+
+const getById = function (id) {
     // get user in db
+    return new Promise(function (resolve, reject) {
+        db.query(`SELECT * from user WHERE uid="${id}"`, function (err, result) {
+            if (err){
+
+                reject(err);
+            }else{
+                resolve(result[0])
+            }
+        })
+    })
 }
 const updateById = function (uid, updateObj) {
     // update 

@@ -1,6 +1,5 @@
 var mysql = require('mysql')
 var connection = mysql.createConnection({
-
     host: 'localhost',
     user: 'root',
     // db password
@@ -9,4 +8,5 @@ var connection = mysql.createConnection({
     database: 'insta_pp'
 })
 connection.connect();
+console.log("connected to db");
 module.exports = connection;

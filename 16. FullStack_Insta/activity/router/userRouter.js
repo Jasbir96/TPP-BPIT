@@ -4,7 +4,7 @@ let { createUser, updateUser, deleteUser, getUser } = require("../controller/use
 // user routes
 // /:user_id
 // read  => GET ONE 
-
+// localhost:3000/api/v1/users/dsgkbfds
 userRouter.post("/", createUser)
 userRouter.route("/:user_id").get(getUser).patch(updateUser).delete(deleteUser);
 module.exports = userRouter

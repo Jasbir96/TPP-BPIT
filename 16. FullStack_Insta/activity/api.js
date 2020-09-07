@@ -9,6 +9,8 @@ const app = express();
 const fs = require("fs");
 const path = require("path");
 const userRouter = require("./router/userRouter");
+// to send static resources to client 
+app.use(express.static("view"))
 // const postRouter = require("./router/postRouter");
 // REST API
 // HTTP request => 
@@ -38,7 +40,7 @@ app.use(express.json());
 // })
 // get Request => 
 // localhost:3000/api/users/user_id
-app.use("/api/users", userRouter);
+app.use("/api/v1/users", userRouter);
 // app.use("/api/post", postRouter);
 // ****************************users********************
 // user Route Handlers
