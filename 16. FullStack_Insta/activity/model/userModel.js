@@ -33,7 +33,7 @@ const getById = function (id) {
         })
     })
 }
-const getAll = function (id) {
+const getAll = function () {
     // get user in db
     return new Promise(function (resolve, reject) {
         db.query(`SELECT * from user`, function (err, result) {
@@ -53,6 +53,7 @@ const updateById = function (uid, updateObj) {
     //     name: "Jasbir",
     //         number : 8800943685
     // }
+    // name="kjghh",number="jghfjg"
     let updateStr = "";
     for (let key in updateObj) {
         updateStr += `${key} = "${updateObj[key]}",`
@@ -67,7 +68,7 @@ const updateById = function (uid, updateObj) {
             if (err) {
                 reject(err);
             } else {
-                resolve(result);
+                resolve();
             }
 
         })
@@ -83,7 +84,7 @@ const deleteById = function (id) {
 
                 reject(err);
             } else {
-                resolve(result)
+                resolve()
             }
         })
     })

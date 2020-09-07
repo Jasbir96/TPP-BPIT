@@ -1,5 +1,6 @@
 let userDB = require("../model/user.json");
 let userModel = require("../model/userModel");
+let userFollowerModel = require("../model/userFollowerModel");
 async function createUser(req, res) {
     try {
         let ndbuser = await userModel.create(req.body);
@@ -52,7 +53,7 @@ async function updateUser(req, res) {
     // send to res
     // update 
     try {
-        const response = await userModel.updateById(user_id, updateObj);
+        await userModel.updateById(user_id, updateObj);
         const uUser = await userModel.getById(user_id);
         res.status(200).json({
             status: "success",
@@ -66,15 +67,15 @@ async function updateUser(req, res) {
     }
     // {user_id:12345}
 }
-function deleteUser(req, res) {
+async function deleteUser(req, res) {
     let { user_id } = req.params;
     try {
         const dUser = await userModel.getById(user_id);
-        const response = await userModel.deleteById(user_id, updateObj);
+        await userModel.deleteById(user_id, updateObj);
         res.status(200).json({
             status: "success",
             "message": dUser
-            
+
         })
     } catch (err) {
         res.status(500).json({
@@ -107,9 +108,51 @@ async function getAllUser(req, res) {
     }
 
 }
+async function handleRequest(req, res) {
+    try {
+        // user_id=> public/private
+        let reqobj = req.body;
+        let { is_public } = await userModel.getById(reqobj.user_id);
+        if (is_public == true) {
+            reqobj.is_pending = false;
+            let mappingObj = await userFollowerModel.createRequest(reqobj);
+            return res.status(201).json({
+                status: "accepted",
+                request: mappingObj,
+                "message": "your request has been accepted"
 
+            })
+        }
+        let mappingObj = await userFollowerModel.createRequest(reqobj);
+        return res.status(201).json({
+            status: "pending",
+            request: mappingObj,
+            "message": "your request is pending user will accept it "
+
+        })
+        // check
+        //  public=> is_pending => false
+        // private => is_pending=>true
+        // create Request
+        // db Save
+        // console.log(user);
+        // if a new entry is created on server
+        // memory -> ram
+        //    res status code server send 
+        res.status(201).json({
+            success: "successfull",
+            message: mappingObj
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: "failure",
+            "message": err.message
+        })
+    }
+}
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getAllUser = getAllUser;
+module.exports.handleRequest = handleRequest;
