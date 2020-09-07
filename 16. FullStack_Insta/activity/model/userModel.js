@@ -33,6 +33,19 @@ const getById = function (id) {
         })
     })
 }
+const getAll = function (id) {
+    // get user in db
+    return new Promise(function (resolve, reject) {
+        db.query(`SELECT * from user`, function (err, result) {
+            if (err){
+
+                reject(err);
+            }else{
+                resolve(result)
+            }
+        })
+    })
+}
 const updateById = function (uid, updateObj) {
     // update 
 }
@@ -42,5 +55,6 @@ const deleteById = function (id) {
 }
 module.exports.create = create
 module.exports.getById = getById
+module.exports.getAll = getAll
 module.exports.updateById = updateById
 module.exports.deleteById = deleteById
