@@ -44,54 +44,44 @@ async function getUser(req, res) {
     }
 
 }
-function updateUser(req, res) {
+async function updateUser(req, res) {
     let { user_id } = req.params;
-    // {user_id:12345}
-    let user;
-    let toUpdate = req.body;
-    for (let i = 0; i < userDB.length; i++) {
-        if (userDB[i].user_id == user_id) {
-            user = userDB[i];
-        }
-    }
-
-    if (user == undefined) {
-        return res.status(404).json({
+    let updateObj = req.body;
+    // sql => update 
+    // getById=> user
+    // send to res
+    // update 
+    try {
+        const response = await userModel.updateById(user_id, updateObj);
+        const uUser = await userModel.getById(user_id);
+        res.status(200).json({
+            status: "success",
+            "message": uUser
+        })
+    } catch (err) {
+        res.status(500).json({
             status: "failure",
-            message: "user not found"
+            err: err.message
         })
     }
-    // update
-    for (let key in toUpdate) {
-        user[key] = toUpdate[key];
-    }
-    fs.writeFileSync(path.join(__dirname, "user.json"), JSON.stringify(userDB));
-    // update 
-    res.status(200).json({
-        status: "success",
-        "message": "message"
-    })
-
+    // {user_id:12345}
 }
 function deleteUser(req, res) {
     let { user_id } = req.params;
-    // {user_id:12345}
-    let initialUserL = userDB.length;
-    userDB = userDB.filter(function (user) {
-        return user.user_id != user_id;
-    })
-    if (initialUserL == userDB.length) {
-        return res.status(404).json({
+    try {
+        const dUser = await userModel.getById(user_id);
+        const response = await userModel.deleteById(user_id, updateObj);
+        res.status(200).json({
+            status: "success",
+            "message": dUser
+            
+        })
+    } catch (err) {
+        res.status(500).json({
             status: "failure",
-            message: "user not found"
+            err: err.message
         })
     }
-    fs.writeFileSync(path.join(__dirname, "user.json"), JSON.stringify(userDB));
-
-    res.status(200).json({
-        status: "success",
-        "message": "user deleted"
-    })
 }
 async function getAllUser(req, res) {
     try {
