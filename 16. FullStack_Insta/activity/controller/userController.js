@@ -27,6 +27,7 @@ async function getUser(req, res) {
         let user;
         //   db get using id 
         user = await userModel.getById(user_id);
+
         if (user == undefined) {
             return res.status(404).json({
                 status: "failure",
@@ -223,10 +224,10 @@ async function getAllFollowers(req, res) {
         // 1. image_url
         // 2. handle
 
-        res.status(201).json({
-            success: "successfull",
-            message: `${handle} rejected`
-        })
+        // res.status(201).json({
+        //     success: "successfull",
+        //     message: `${handle} rejected`
+        // })
     } catch (err) {
         res.status(500).json({
             success: "failure",
