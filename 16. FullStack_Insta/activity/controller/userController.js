@@ -1,6 +1,7 @@
 let userDB = require("../model/user.json");
 let userModel = require("../model/userModel");
 let userFollowerModel = require("../model/userFollowerModel");
+// ********************CRUD USER*****************
 async function createUser(req, res) {
     try {
         let ndbuser = await userModel.create(req.body);
@@ -108,6 +109,7 @@ async function getAllUser(req, res) {
     }
 
 }
+// *******************Request***********************
 async function handleRequest(req, res) {
     try {
         // user_id=> public/private
@@ -185,6 +187,53 @@ async function rejectRequest(req, res) {
         })
     }
 }
+
+async function getAllFollowers(req, res) {
+
+    try {
+        // user_id=> public/private
+        let { user_id } = req.params;
+        // user_id, follower_id,is_pending ,
+        let UfollResult = await userFollowerModel.getAllFolId(user_id);
+        if (UfollResult.length > 0) {
+            async function helper(userfollowObj) {
+                let { follower_id, is_pending } = userfollowObj;
+                // user table
+                let { handle, p_img_url } = await userModel
+                    .getById(follower_id);
+                console.log(handle);
+
+                return { handle, p_img_url, is_pending };
+            }
+            let folImgHandArr = [];
+            for (let i = 0; i < UfollResult.length; i++) {
+                let ans = await helper(UfollResult[i]);
+                folImgHandArr.push(ans);
+            }
+            res.status(201).json({
+                success: "successfull",
+                message: folImgHandArr
+            })
+        } else {
+            res.status(201).json({
+                success: "successfull",
+                message: `no user found`
+            })
+        }
+        // 1. image_url
+        // 2. handle
+
+        res.status(201).json({
+            success: "successfull",
+            message: `${handle} rejected`
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: "failure",
+            "message": err.message
+        })
+    }
+}
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
@@ -193,3 +242,5 @@ module.exports.getAllUser = getAllUser;
 module.exports.handleRequest = handleRequest;
 module.exports.acceptRequest = acceptRequest;
 module.exports.rejectRequest = rejectRequest;
+module.exports.getAllFollowers = getAllFollowers;
+
