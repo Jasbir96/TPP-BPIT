@@ -197,19 +197,24 @@ async function getAllFollowers(req, res) {
         // user_id, follower_id,is_pending ,
         let UfollResult = await userFollowerModel.getAllFolId(user_id);
         if (UfollResult.length > 0) {
-
             async function helper(userfollowObj) {
                 let { follower_id, is_pending } = userfollowObj;
                 // user table
                 let { handle, p_img_url } = await userModel
                     .getById(follower_id);
                 console.log(handle);
-
                 return { handle, p_img_url, is_pending };
             }
-            
+//             let newArr = [];
+//             for (let i = 0; i < UfollResult.length; i++) {
+//                 newArr.push(helper(UfollResult[i]));
+//             }
+// console.log("Line no 212");
+//             console.log(newArr);
             let pArray = UfollResult.map(helper);
+            //  await => sync 
             let folImgHandArr = await Promise.all(pArray);
+
             res.status(201).json({
                 success: "successfull",
                 message: folImgHandArr

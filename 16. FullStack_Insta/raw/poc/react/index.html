@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- first => React algorithm -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+
+    <!-- it actual changes the Dom -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!--  Transpile => JSX-> JS  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // React => capital letter
+        function Hello(props) {
+            return <h1>Hello {props.name} your
+                age is {props.age}</h1>;
+        }
+
+        // composition
+        function HelloParent() {
+            return (
+                <div>
+                    <Hello name="Jasbir" age="23"></Hello>
+                    <Hello name="Rajneesh" age="22"></Hello>
+                    <Hello name="Ujjwal" age="23"></Hello>
+                </div>
+            )
+        }
+        // add to Page
+        ReactDOM.render(<HelloParent></HelloParent>, document.getElementById("root"))
+    </script>
+
+</body>
+
+</html>
