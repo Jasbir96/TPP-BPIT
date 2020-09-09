@@ -197,6 +197,7 @@ async function getAllFollowers(req, res) {
         // user_id, follower_id,is_pending ,
         let UfollResult = await userFollowerModel.getAllFolId(user_id);
         if (UfollResult.length > 0) {
+
             async function helper(userfollowObj) {
                 let { follower_id, is_pending } = userfollowObj;
                 // user table
@@ -206,11 +207,9 @@ async function getAllFollowers(req, res) {
 
                 return { handle, p_img_url, is_pending };
             }
-            let folImgHandArr = [];
-            for (let i = 0; i < UfollResult.length; i++) {
-                let ans = await helper(UfollResult[i]);
-                folImgHandArr.push(ans);
-            }
+            
+            let pArray = UfollResult.map(helper);
+            let folImgHandArr = await Promise.all(pArray);
             res.status(201).json({
                 success: "successfull",
                 message: folImgHandArr

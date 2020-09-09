@@ -57,12 +57,7 @@
   * http://youmightnotneedjquery.com/
 ### Web
 * https://developer.mozilla.org/en-US/docs/Learn
-### OpenBoard
-* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
-* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
-* https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-* https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
-#### Openboard
+### OpenBoard 
   *  Canvas :
       * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
       * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
@@ -72,12 +67,25 @@
     * https://stackoverflow.com/questions/12796513/html5-canvas-to-png-file
   * Event Reference : https://developer.mozilla.org/en-US/docs/Web/Events
   *  Socketio(Ise Pakka dekhna ) : https://www.youtube.com/watch?v=8ARodQ4Wlf4
-  *  Packaging : https://www.christianengvall.se/electron-packager-tutorial/  
+  *  Packaging :https://www.christianengvall.se/electron-packager-tutorial/  
 #### Extensions
   * https://developer.chrome.com/extensions/overview
   * https://developer.chrome.com/extensions/getstarted
   * https://developer.chrome.com/extensions/messaging
   * https://developer.chrome.com/extensions/tabs
   * https://developer.chrome.com/extensions/storage
-**Videos** 
-* https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bL9VOMT65ahNEri9uqLWfS
+* Videos : https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bL9VOMT65ahNEri9uqLWfS
+### Full Stack
+  * REST API : 
+    * video : https://www.youtube.com/watch?v=Q-BpqyOT3a8 
+  * https://restfulapi.net/rest-architectural-constraints
+  *  Request Methods: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+  * Res Status:https://www.restapitutorial.com/httpstatuscodes.html
+  * MVC: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+  #### EXPRESS 
+    * https://expressjs.com/en/starter/basic-routing.html
+    *	https://expressjs.com/en/guide/routing.html
+    *	https://expressjs.com/en/guide/writing-middleware.html
+  #### React
+  * Best video for  getting started with react: https://www.youtube.com/watch?v=SAIdyBFHfVU
+  * https://www.youtube.com/watch?v=Tn6-PIqc4UM
