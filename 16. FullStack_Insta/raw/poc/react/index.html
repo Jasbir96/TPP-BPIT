@@ -17,24 +17,35 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        // React => capital letter
-        function Hello(props) {
-            return <h1>Hello {props.name} your
-                age is {props.age}</h1>;
-        }
+        // 1. React => capital letter
+        let names = [{ "name": "Sheldon" },
+        { "name": "Lenord" },
+        { "name": "Rajesh" },
+        { "name": "Howard" },
 
+        ]
+        function Hello(props) {
+            return <h1>Hello {props.name} </h1>;
+        }
         // composition
-        function HelloParent() {
+        function HelloParent(props) {
+            let { names } = props;
             return (
-                <div>
-                    <Hello name="Jasbir" age="23"></Hello>
-                    <Hello name="Rajneesh" age="22"></Hello>
-                    <Hello name="Ujjwal" age="23"></Hello>
-                </div>
+                // 2. to export multiple 
+                <React.Fragment>
+                    {
+                        names.map(function (elem) {
+                            return <Hello
+                                name={elem.name}></Hello>
+                        })
+                    }
+                </React.Fragment>
+
             )
         }
         // add to Page
-        ReactDOM.render(<HelloParent></HelloParent>, document.getElementById("root"))
+        ReactDOM.render(<HelloParent names={names}>
+        </HelloParent>, document.getElementById("root"))
     </script>
 
 </body>
