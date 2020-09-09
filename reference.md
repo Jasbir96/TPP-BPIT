@@ -89,3 +89,7 @@
   #### React
   * Best video for  getting started with react: https://www.youtube.com/watch?v=SAIdyBFHfVU
   * https://www.youtube.com/watch?v=Tn6-PIqc4UM
+  * this link: https://javascript.info/object-methods
+  * Dan Abramov Official Blog: https://overreacted.io/
+  * React Official Docs(Main Concept to kar hi lena): https://reactjs.org/docs/getting-started.html
+    

@@ -46,37 +46,50 @@
                 //  parent constructor
                 super();
                 this.state = {
-                    value: 1
+                    value: 0
                 }
                 // bind
+                // increment.bind(this, null);
+                // decrement.bind(this, null);
             }
             increment = () => {
                 // this.state = this.state + 1;
                 this.setState({
-                    value:this.state.value + 1
+                    value: this.state.value + 1
                 })
             }
             decrement = () => {
                 this.setState({
-                    value:this.state.value - 1
+                    value: this.state.value - 1
                 })
             }
             //  when state changes => react will always call the render fn when state changes
             render() {
-
                 return (<React.Fragment>
-                    <p className="ml-4 lead">{
-                        this.state.value}</p>
-                    <button className="btn btn-primary" 
-                    onClick={this.increment}>+</button>
-                    <button className="btn btn-danger" 
-                    onClick={this.decrement}>-</button>
-                </React.Fragment>)               
-
+                    <div style={{ backgroundColor: this.props.bg }}>
+                        <p className="ml-4 lead">{
+                            this.state.value}</p>
+                        <button className="btn btn-primary"
+                            onClick={this.increment}>+</button>
+                        <button className="btn btn-danger"
+                            onClick={this.decrement}>-</button>
+                    </div>
+                </React.Fragment>)
             }
         }
-ReactDOM.render(<Counter></Counter>,
- document.getElementById("root"))
+        function CounterParent() {
+            return (
+                <React.Fragment>
+                    <Counter bg="green"></Counter>
+                    <Counter bg="red"></Counter>
+                    <Counter></Counter>
+                    <Counter></Counter>
+                    <Counter></Counter>
+                </React.Fragment>
+            )
+        }
+        ReactDOM.render(<CounterParent></CounterParent>,
+            document.getElementById("root"))
     </script>
 
 </body>
