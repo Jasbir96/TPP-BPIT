@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="top-bar" class="top-bar">
         <div class="btn-container">
@@ -31,8 +33,19 @@
             </div>
         </div>
     </div>
+    <div class="overlay">
+
+        <div class="circle"></div>
+        <canvas class="board"></canvas>
+        <script>
+
+            let ctx = document.querySelector(".board").getContext("2d");
+            ctx.fillRect(0,0,100,100);
+        </script>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
     <script src="index.js"></script>
+    
 
 </body>
 

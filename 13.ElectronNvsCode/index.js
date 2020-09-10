@@ -1,4 +1,4 @@
-const $ = jQuery=require("jquery");
+const $ = jQuery = require("jquery");
 require("jquery-ui-dist/jquery-ui");
 const path = require("path");
 const fs = require("fs");
@@ -120,12 +120,13 @@ $(document).ready(async function () {
     });
     let isDark = false;
     $("#toggle").on("click", function () {
-        if (isDark) {
-            myMonaco.editor.setTheme('light');
-        } else {
-            myMonaco.editor.setTheme('dark');
-        }
-        isDark = !isDark;
+        // if (isDark) {
+        //     myMonaco.editor.setTheme('light');
+        // } else {
+        //     myMonaco.editor.setTheme('dark');
+        // }
+        // isDark = !isDark;
+        $(".overlay").css("display", "block");
     })
     $(".file-explorer").resizable();
 })

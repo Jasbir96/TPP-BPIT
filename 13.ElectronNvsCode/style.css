@@ -129,3 +129,12 @@ font-size:60%;
     background: inherit;
     
 }
+.overlay{
+    height: 100vh;
+    width:100vw;
+    position: absolute;
+    background:white;
+    z-index:100;
+    top:0px;
+    display: none;
+}
