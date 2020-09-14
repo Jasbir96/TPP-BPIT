@@ -17,6 +17,10 @@ let myObj = {
         }
         // global object 
         inner();
+        
+        let boundFn = inner.bind(myObj);
+        boundFn();
+
     }
 }
 //  myobj has called say HI

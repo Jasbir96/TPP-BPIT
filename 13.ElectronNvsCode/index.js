@@ -6,7 +6,6 @@ let myEditor, myMonaco;
 $(document).ready(async function () {
     myEditor = await createEditor();
     //    set editor content
-
     // ***************************File explorer logic*****************************
     let src = process.cwd();
     let name = path.basename(src);
