@@ -8,7 +8,8 @@ const TaskList = (props) => {
             return (
                 <div className="task"
                     key={task.id}>
-                    <span className="mr-4">{task.name}
+                    <span className="mr-4">
+                        {task.name}
                     </span>
                     <button className="btn btn-danger"
                         onClick={() => {
