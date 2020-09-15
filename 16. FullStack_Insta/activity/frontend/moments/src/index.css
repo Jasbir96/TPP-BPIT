@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ui css */
+.app{
+  display: flex;
+}
+.userView{
+  width: 30vw;
+  height: 100vh;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-around;
+}

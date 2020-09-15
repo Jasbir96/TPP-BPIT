@@ -55,6 +55,6 @@ app.use("/api/v1/users", userRouter);
 // ********************POST***********************
 
 // localhost:3000/api/users
-app.listen(3000, function () {
-    console.log("Server is listening at port 3000");
+app.listen(4000, function () {
+    console.log("Server is listening at port 4000");
 })
