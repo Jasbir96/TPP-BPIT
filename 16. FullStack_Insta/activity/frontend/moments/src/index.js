@@ -1,29 +1,89 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import ProFileDetails from "./components/user/ProfileDetails";
+
 import './index.css';
 // import App from './App';
-
+import React, { Component } from 'react';
 import * as serviceWorker from './serviceWorker';
-
+import axios from 'axios';
 // functional component
+function ProfileMenu(props) {
+  let { changeMenu } = props;
+  return (
+    <div className="profile-menu">
 
+      <div className="suggestion" onClick={() => {
+        changeMenu("suggestion")
+      }}>suggestion</div>
+      <div className="request" onClick={() => {
+        changeMenu("request")
+      }}> request</div>
+      <div className="follower" onClick={() => {
+        changeMenu("followers")
+      }}>follower</div>
+    </div>
+  )
+}
 
-function Profile() {
+function Profile(props) {
   return (
     <div className="profile">
-      <ProFileDetails></ProFileDetails>
-      <div className="profile-menu">Profile Menu</div>
+      {/* function */}
+      <ProFileDetails  ></ProFileDetails>
+      {/* data */}
+      <ProfileMenu changeMenu={props.changeMenu}></ProfileMenu>
     </div>)
 }
 // current
-function UserView() {
-  return (<div className="userView">
-    <Profile></Profile>
-    <div className="menu-list">Menu List</div>
-  </div>)
+class UserView extends Component {
+  state = {
+    cMenu: "suggestion",
+    list: []
+  }
+  changeMenu = async (nMenu) => {
+    console.log(nMenu);
+    //  get followers of current user 
+    // state 
+    //  request => get followers_id
+    let obj = await axios.get("/api/v1/users/fr/4501f8d9-0b28-4d1f-b661-52ee693006bb");
+    let uFollArr = [];
+    if (nMenu == "followers") {
+      // console.log(uFollArr);
+      uFollArr = obj.data.message.
+        filter((follower) => { return follower.is_pending == 0 });
+
+    } else if (nMenu == "request") {
+
+      uFollArr = obj.data.message
+        .filter(follower=> follower.is_pending == 1);
+    }
+    this.setState({
+      cMenu: nMenu,
+      list: uFollArr
+    })
+    // follower_id => user => details
+  }
+  render() {
+    return (<div className="userView">
+      <Profile changeMenu={this.changeMenu}></Profile>
+      <MenuList list={this.state.list}></MenuList>
+    </div>)
+  }
 }
 
+function MenuList(props) {
+  // req => class based 
+  let { list } = props;
+  return (<div className="menu-list">{
+    list.map((follower) => {
+      return (<div >
+        <img src={follower.p_img_url} alt="profile-img"></img>
+        <div> {follower.email_id}</div>
+        <div>{follower.handle}</div>
+      </div>)
+    })
+  }</div>)
+}
 
 function App() {
   return (

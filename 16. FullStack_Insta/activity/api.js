@@ -56,5 +56,5 @@ app.use("/api/v1/users", userRouter);
 
 // localhost:3000/api/users
 app.listen(4000, function () {
-    console.log("Server is listening at port 4000");
+    console.log(" Express Server is listening at port 4000");
 })

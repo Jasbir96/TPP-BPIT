@@ -23,19 +23,37 @@ class ProFileDetails extends Component {
         //         ,handle:"abc@gmail.com"
         //     })
         // }, 2000);
-        axios.get("/api/v1/users/394568e9-54d4-40d6-8d2a-d57f6c0e59a7").then(
+        axios.
+        get("/api/v1/users/4501f8d9-0b28-4d1f-b661-52ee693006bb").then(
             (res) => {
                 let { email_id, handle, p_img_url } = res.data.user;
                 this.setState({
-                    email:email_id,
-                    src:p_img_url,
-                    handle:handle
+                    email: email_id,
+                    src: p_img_url,
+                    handle: handle
                 })
+            }).then(() => {
+                let followerP = axios.get("/api/v1/users/fr/4501f8d9-0b28-4d1f-b661-52ee693006bb")
+                return followerP;
+            }).then((follwoerRes) => {
+
+                let followers = follwoerRes.data.message.filter((follower) => {
+                    return follower.is_pending == 0;
+                });
+                let followerCount = followers.length;
+                console.log(followerCount);
+
+                this.setState({
+                    followers: followerCount
+                })
+
             })
+
     }
-    // 2. ,4 
+    // 2.,4 
     render() {
-        let { src, email, handle, post, followers, following } = this.state;
+        let { src, email, handle, post, followers, following } 
+        = this.state;
         return (
             <div className="profile-details">
                 <div className="profile-subpart">
@@ -49,7 +67,6 @@ class ProFileDetails extends Component {
                         <p>{post}</p>
                         <div>POST</div>
                     </div>
-                    
                     <div className="div follower">
                         <p>{followers}</p>
                         <div>Follower</div>
@@ -60,7 +77,6 @@ class ProFileDetails extends Component {
                         <div>Following</div>
                     </div>
                 </div>
-
             </div>)
 
     }
