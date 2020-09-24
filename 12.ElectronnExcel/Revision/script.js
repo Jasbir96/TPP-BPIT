@@ -125,7 +125,6 @@ $(document).ready(function () {
                     fontFamily: "arial",
                     bColor: "white",
                     color: "black"
-
                 };
                 $(allCellOfarow[j]).html("");
 
