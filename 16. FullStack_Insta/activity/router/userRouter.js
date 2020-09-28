@@ -6,6 +6,7 @@ let { createUser, updateUser, deleteUser, getUser, getAllUser,
 // /:user_id
 // read  => GET ONE 
 // localhost:3000/api/v1/users/followrequest
+
 userRouter.route("/").post(createUser).get(getAllUser)
 userRouter.route("/fr").post(handleRequest);
 userRouter.route("/fr/:user_id").get(getAllFollowers)

@@ -55,7 +55,7 @@ class UserView extends Component {
     } else if (nMenu == "request") {
 
       uFollArr = obj.data.message
-        .filter(follower=> follower.is_pending == 1);
+        .filter(follower => follower.is_pending == 1);
     }
     this.setState({
       cMenu: nMenu,
@@ -87,6 +87,7 @@ function MenuList(props) {
 
 function App() {
   return (
+
     <React.Fragment>
       <div className="app">
         <UserView></UserView>
@@ -95,7 +96,7 @@ function App() {
     </React.Fragment>
   );
 }
-ReactDOM.render(<App />, document.getElementById('root')
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
