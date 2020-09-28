@@ -54,6 +54,7 @@ async function updateUser(req, res) {
     // getById=> user
     // send to res
     // update 
+    // url 
     try {
         await userModel.updateById(user_id, updateObj);
         const uUser = await userModel.getById(user_id);

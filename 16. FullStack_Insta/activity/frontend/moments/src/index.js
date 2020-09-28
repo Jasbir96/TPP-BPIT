@@ -1,6 +1,9 @@
 import ReactDOM from 'react-dom';
 import ProFileDetails from "./components/user/ProfileDetails";
-
+import Settings from "./components/SettingsPage";
+import LoginPage from "./components/LoginPage";
+import PageNotFound from "./components/PageNotFound";
+import { BrowserRouter, Switch, Route,Redirect } from "react-router-dom";
 import './index.css';
 // import App from './App';
 import React, { Component } from 'react';
@@ -89,11 +92,27 @@ function App() {
   return (
 
     <React.Fragment>
-      <div className="app">
-        <UserView></UserView>
-        <div className="postView"> PostView</div>
-      </div>
-    </React.Fragment>
+      <Switch>
+        <Route path="/profile" exact>
+          <div className="app">
+            <UserView></UserView>
+            <div className="postView"> PostView</div>
+          </div>
+        </Route>
+        <Route path="/" exact>
+          <LoginPage></LoginPage>
+        </Route>
+        <Redirect path="/login" exact>
+        </Redirect>
+        <Route path="/settings" exact>
+          <Settings></Settings>
+        </Route>
+        <Route>
+          
+          <PageNotFound></PageNotFound>
+        </Route>
+      </Switch>
+    </React.Fragment >
   );
 }
 ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root')
