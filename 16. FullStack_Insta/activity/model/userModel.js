@@ -9,7 +9,7 @@ const createUser = createEntityFact("user");
 const getById = function (id) {
     // get user in db
     return new Promise(function (resolve, reject) {
-        db.query(`SELECT * from user WHERE uid="${id}"`, function (err, result) {
+        db.query(`SELECT * from user WHERE id="${id}"`, function (err, result) {
             if (err) {
 
                 reject(err);
@@ -33,13 +33,7 @@ const getAll = function () {
     })
 }
 const updateById = function (uid, updateObj) {
-    // update UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
-
-    // {
-    //     name: "Jasbir",
-    //         number : 8800943685
-    // }
-    // name="kjghh",number="jghfjg"
+   
     let updateStr = "";
     for (let key in updateObj) {
         updateStr += `${key} = "${updateObj[key]}",`
@@ -48,7 +42,7 @@ const updateById = function (uid, updateObj) {
     updateStr = updateStr.substring(0, updateStr.length - 1);
     // "name = Jasbir,number = 8800943685"
 
-    var query = `UPDATE user SET ${updateStr} WHERE uid="${uid}"`
+    var query = `UPDATE user SET ${updateStr} WHERE id="${uid}"`
     return new Promise(function (resolve, reject) {
         db.query(query, function (err, result) {
             if (err) {
@@ -65,7 +59,7 @@ const updateById = function (uid, updateObj) {
 const deleteById = function (id) {
     // delete  user in db
     return new Promise(function (resolve, reject) {
-        db.query(` DELETE  from user WHERE uid="${id}"`, function (err, result) {
+        db.query(` DELETE  from user WHERE id="${id}"`, function (err, result) {
             if (err) {
 
                 reject(err);

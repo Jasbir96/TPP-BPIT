@@ -24,7 +24,7 @@ class ProFileDetails extends Component {
         //     })
         // }, 2000);
         axios.
-        get("/api/v1/users/4501f8d9-0b28-4d1f-b661-52ee693006bb").then(
+        get("/api/v1/users/394568e9-54d4-40d6-8d2a-d57f6c0e59a7").then(
             (res) => {
                 let { email_id, handle, p_img_url } = res.data.user;
                 this.setState({

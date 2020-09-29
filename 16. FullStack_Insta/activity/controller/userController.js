@@ -48,8 +48,15 @@ async function getUser(req, res) {
 
 }
 async function updateUser(req, res) {
+
     let { user_id } = req.params;
     let updateObj = req.body;
+    let img;
+    if (req.file) {
+
+        img = req.file.filename;
+        updateObj.p_img_url = img;
+    }
     // sql => update 
     // getById=> user
     // send to res
@@ -206,12 +213,12 @@ async function getAllFollowers(req, res) {
                 console.log(handle);
                 return { handle, p_img_url, is_pending };
             }
-//             let newArr = [];
-//             for (let i = 0; i < UfollResult.length; i++) {
-//                 newArr.push(helper(UfollResult[i]));
-//             }
-// console.log("Line no 212");
-//             console.log(newArr);
+            //             let newArr = [];
+            //             for (let i = 0; i < UfollResult.length; i++) {
+            //                 newArr.push(helper(UfollResult[i]));
+            //             }
+            // console.log("Line no 212");
+            //             console.log(newArr);
             let pArray = UfollResult.map(helper);
             //  await => sync 
             let folImgHandArr = await Promise.all(pArray);

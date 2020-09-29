@@ -36,7 +36,7 @@ const upload = multer({
 // upload=multer({dest:"public"})
 app.post("/uploadMedia", upload.single("photo"), function (req, res) {
     console.log(req.body);
-    // console.log(req.file.file);
+    console.log(req.file);
     let img = req.file;
     // link => db 
 
