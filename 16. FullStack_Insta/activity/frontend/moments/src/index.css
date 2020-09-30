@@ -12,7 +12,14 @@ code {
     monospace;
 }
 
+body{
+  background-color: lightgrey;
+
+}
 /* ui css */
+#root{
+  height: 100vh;
+}
 .app{
   display: flex;
 }
@@ -22,4 +29,22 @@ code {
   background-color: lightgray;
   display: flex;
   justify-content: space-around;
+}
+.container{
+  text-align: center;
+background-color: white;
+width:70%;
+margin: 0 auto;
+margin-top:5rem;
+}
+.img-container{
+  height: 40px;
+  width:40px;
+  background-color: lightgray;
+  margin:0 auto;
+  border-radius: 50%;
+}
+.profile-img{
+  height: 100%;
+  object-fit: contain;;
 }

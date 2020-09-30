@@ -56,7 +56,7 @@ async function updateUser(req, res) {
     if (req.file) {
 
         img = req.file.filename;
-        updateObj.p_img_url = img;
+        updateObj.p_img_url = "/user/" + img;
     }
     // sql => update 
     // getById=> user
@@ -66,7 +66,7 @@ async function updateUser(req, res) {
     try {
         await userModel.updateById(user_id, updateObj);
         const uUser = await userModel.getById(user_id);
-        console.log(uUser);
+        // console.log(uUser);
         res.status(200).json({
             status: "success",
             "message": uUser

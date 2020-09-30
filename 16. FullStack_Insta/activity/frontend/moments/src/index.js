@@ -87,10 +87,8 @@ function MenuList(props) {
     })
   }</div>)
 }
-
 function App() {
   return (
-
     <React.Fragment>
       <Switch>
         <Route path="/profile" exact>
@@ -104,7 +102,7 @@ function App() {
         </Route>
         <Redirect path="/login" exact>
         </Redirect>
-        <Route path="/settings" exact>
+        <Route path="/setting" exact>
           <Settings></Settings>
         </Route>
         <Route>
