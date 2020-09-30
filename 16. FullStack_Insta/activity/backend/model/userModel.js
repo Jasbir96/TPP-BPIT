@@ -1,19 +1,17 @@
-
 const db = require("./connection");
 const { v4: uuidv4 } = require('uuid');
 //  db => model , authentication
 const { createEntityFact } = require("../utility/modelFactory");
-
 const createUser = createEntityFact("user");
-
 const getById = function (id) {
     // get user in db
+    console.log(`SELECT * from user WHERE id="${id}"`);
     return new Promise(function (resolve, reject) {
         db.query(`SELECT * from user WHERE id="${id}"`, function (err, result) {
             if (err) {
-
                 reject(err);
             } else {
+                console.log(result);
                 resolve(result[0])
             }
         })
@@ -55,7 +53,6 @@ const updateById = function (uid, updateObj) {
     })
 
 }
-
 const deleteById = function (id) {
     // delete  user in db
     return new Promise(function (resolve, reject) {
@@ -69,8 +66,9 @@ const deleteById = function (id) {
         })
     })
 }
+
 module.exports.create = createUser;
-module.exports.getById = getById
-module.exports.getAll = getAll
-module.exports.updateById = updateById
-module.exports.deleteById = deleteById
+module.exports.getById = getById;
+module.exports.getAll = getAll;
+module.exports.updateById = updateById;
+module.exports.deleteById = deleteById;

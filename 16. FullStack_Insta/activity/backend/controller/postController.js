@@ -3,11 +3,6 @@ const postModel=require("../model/postModel");
 async function createPost(req, res) {
     try {
         let nPost = await postModel.create(req.body);
-        // db Save
-        // console.log(user);
-        // if a new entry is created on server
-        // memory -> ram
-        //    res status code server send 
         res.status(201).json({
             success: "successfull",
             post: nPost
@@ -19,7 +14,6 @@ async function createPost(req, res) {
         })
     }
 }
-
 function getPost(req, res) {
     let { post_id } = req.params;
     let post;

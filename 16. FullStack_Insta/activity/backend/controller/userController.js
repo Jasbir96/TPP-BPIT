@@ -51,6 +51,7 @@ async function updateUser(req, res) {
 
     let { user_id } = req.params;
     let updateObj = req.body;
+    console.log(req.body)
     let img;
     if (req.file) {
 
@@ -65,6 +66,7 @@ async function updateUser(req, res) {
     try {
         await userModel.updateById(user_id, updateObj);
         const uUser = await userModel.getById(user_id);
+        console.log(uUser);
         res.status(200).json({
             status: "success",
             "message": uUser
@@ -196,7 +198,6 @@ async function rejectRequest(req, res) {
         })
     }
 }
-
 async function getAllFollowers(req, res) {
 
     try {
@@ -247,6 +248,7 @@ async function getAllFollowers(req, res) {
         })
     }
 }
+
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;

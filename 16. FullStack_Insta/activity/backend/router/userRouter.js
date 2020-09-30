@@ -9,7 +9,7 @@ let { createUser, updateUser, deleteUser, getUser, getAllUser,
 // localhost:3000/api/v1/users/followrequest
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public')
+        cb(null, 'public/user')
     },
 
     filename: function (req, file, cb) {
@@ -32,10 +32,9 @@ const upload = multer({
     storage: storage,
     fileFilter: fileFilter
 })
-
 userRouter.route("/").post(createUser).get(getAllUser)
 userRouter.route("/fr").post(handleRequest);
 userRouter.route("/fr/:user_id").get(getAllFollowers)
 userRouter.route("/fr/:user_id/:follower_id").patch(acceptRequest).delete(rejectRequest);
-userRouter.route("/:user_id").get(getUser).patch(upload.single("photo"), updateUser).delete(deleteUser);
+userRouter.route("/:user_id").get(getUser).patch(upload.single("user"), updateUser).delete(deleteUser);
 module.exports = userRouter

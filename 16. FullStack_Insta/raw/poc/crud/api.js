@@ -8,7 +8,7 @@ const app = express();
 let userDB = require("./user.json");
 const fs = require("fs");
 const path = require("path");
-const { create } = require("domain");
+// const { create } = require("domain");
 // REST API
 // HTTP request => 
 // create => POST
@@ -16,7 +16,7 @@ const { create } = require("domain");
 // user defined
 app.use(function (req, res, next) {
     console.log("1st");
-    console.log("Line no 17 " + req.body);
+    // console.log("Line no 17 " + req.body);
     // req.user = "sdafjgbjgbfjmh";
     console.log(req);
     console.log("`````````````````````````");
