@@ -108,7 +108,6 @@ function App() {
           <Settings></Settings>
         </Route>
         <Route>
-          
           <PageNotFound></PageNotFound>
         </Route>
       </Switch>
