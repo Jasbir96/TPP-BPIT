@@ -3,7 +3,7 @@ const postRouter = new express.Router();
 const multer = require("multer");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/user')
+        cb(null, 'public/post')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + ".jpeg")

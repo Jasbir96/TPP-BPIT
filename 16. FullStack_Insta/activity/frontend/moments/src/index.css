@@ -6,12 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+*{
+  box-sizing: border-box;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 body{
   background-color: lightgrey;
 
@@ -47,4 +48,14 @@ margin-top:5rem;
 .profile-img{
   height: 100%;
   object-fit: contain;;
+}
+/* post view */
+.header{
+  height: 20vh;
+  background-color: white;
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem ;
 }

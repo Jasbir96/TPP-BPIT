@@ -3,30 +3,32 @@ import ProFileDetails from "./components/user/ProfileDetails";
 import Settings from "./components/SettingsPage";
 import LoginPage from "./components/LoginPage";
 import PageNotFound from "./components/PageNotFound";
-import { BrowserRouter, Switch, Route,Redirect } from "react-router-dom";
+import PostView from "./components/post/PostView";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import './index.css';
 // import App from './App';
 import React, { Component } from 'react';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
-// functional component
-function ProfileMenu(props) {
-  let { changeMenu } = props;
-  return (
-    <div className="profile-menu">
+  // functional component
+  function ProfileMenu(props) {
+    let { changeMenu } = props;
+    return (
+      <div className="profile-menu">
 
-      <div className="suggestion" onClick={() => {
-        changeMenu("suggestion")
-      }}>suggestion</div>
-      <div className="request" onClick={() => {
-        changeMenu("request")
-      }}> request</div>
-      <div className="follower" onClick={() => {
-        changeMenu("followers")
-      }}>follower</div>
-    </div>
-  )
-}
+        <div className="suggestion" onClick={() => {
+          changeMenu("suggestion")
+        }}>suggestion</div>
+        <div className="request" onClick={() => {
+          changeMenu("request")
+        }}> request</div>
+        <div className="follower" onClick={() => {
+          changeMenu("followers")
+        }}>follower</div>
+      </div>
+    )
+  }
+
 
 function Profile(props) {
   return (
@@ -91,10 +93,10 @@ function App() {
   return (
     <React.Fragment>
       <Switch>
-        <Route path="/profile" exact>
+        <Route path="/profile" >
           <div className="app">
             <UserView></UserView>
-            <div className="postView"> PostView</div>
+            <PostView></PostView>
           </div>
         </Route>
         <Route path="/" exact>
