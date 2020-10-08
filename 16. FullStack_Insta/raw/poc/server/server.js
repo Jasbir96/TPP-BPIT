@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const passport = require("passport");
 const util = require("util");
-var mysql = require('mysql')
+var mysql = require('mysql');
 const { v4: uuidv4 } = require('uuid');
 const cookieSession = require("cookie-session");
 // cookie define
@@ -30,7 +30,6 @@ app.use(express.static("public"));
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 // req will be send through browser
 // start 
-
 // setting define
 // to  serialize user object
 // user object store serialized form for furthur use
@@ -41,7 +40,7 @@ passport.serializeUser((user, done) => {
 })
 // whenver some user send cookie 
 passport.deserializeUser(async (gmail_id, done) => {
-    console.log(id);
+    // console.log(id);
     let resArr = await query(`SELECT * from user WHERE gmail_id="${gmail_id}"`);
     if (resArr.length == 0) {
         done(null, "user not found")
@@ -49,7 +48,6 @@ passport.deserializeUser(async (gmail_id, done) => {
         done(null, resArr[0])
     }
 })
-
 passport.use(new GoogleStrategy({
     clientID: "442880052776-f6vbup6kn2aa46b1ucr1s7feac3l6ioo.apps.googleusercontent.com",
     clientSecret: "PfloDXkHhqD4e2eNMQfeDAcu",
@@ -81,7 +79,6 @@ passport.use(new GoogleStrategy({
         // done(null, user);
     }
 ));
-
 // req to google server => to get email  and profile
 // passport .authectiecte => function google [email,profile],/setting
 // redirect to googl server
@@ -94,13 +91,29 @@ app.get("/auth/callback", passport.authenticate("google"), function (req, res) {
     // req using passport.authenticate
     console.log(req.user);
     // res.send("user authenticated");
-    res.redirect("/private");
+    res.redirect("/user");
 })
-app.get("/private", function (req, res) {
+const authCheck = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.json({
+            status: "failure"
+        })
+    }
+}
+app.get("/user", authCheck, function (req, res) {
     res.json({
-        user:req.user,
-        status:"successfull"
+        status: "success",
+        user: req.user
     })
 })
+// const authCheck = (req, res, next) => {
+//     if (req.user) {
+//         next();
+//     } else {
+//         res.redirect("/auth/google")
+//     }
+// }
 app.listen(4000,
     console.log("Server is listening at port 4000"));

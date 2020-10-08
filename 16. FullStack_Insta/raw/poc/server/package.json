@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0",
