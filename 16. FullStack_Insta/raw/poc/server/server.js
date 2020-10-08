@@ -92,6 +92,8 @@ app.get("/auth/callback", passport.authenticate("google"), function (req, res) {
     console.log(req.user);
     // res.send("user authenticated");
     res.redirect("/user");
+    
+
 })
 const authCheck = (req, res, next) => {
     if (req.user) {
@@ -115,5 +117,7 @@ app.get("/user", authCheck, function (req, res) {
 //         res.redirect("/auth/google")
 //     }
 // }
+
+
 app.listen(4000,
     console.log("Server is listening at port 4000"));
