@@ -89,13 +89,14 @@ app.get("/auth/google",
 app.get("/auth/callback", passport.authenticate("google"), function (req, res) {
     //identify 
     // req using passport.authenticate
+    console.log("user authenticated");
     console.log(req.user);
     // res.send("user authenticated");
-    res.redirect("/user");
-    
-
+    // res.redirect("/user");
+    res.redirect("http://localhost:3000");
 })
 const authCheck = (req, res, next) => {
+
     if (req.user) {
         next();
     } else {
@@ -104,6 +105,7 @@ const authCheck = (req, res, next) => {
         })
     }
 }
+
 app.get("/user", authCheck, function (req, res) {
     res.json({
         status: "success",

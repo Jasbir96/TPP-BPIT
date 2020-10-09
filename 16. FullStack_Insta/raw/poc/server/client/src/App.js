@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, Switch, Route, Redirect, } from "react-router-dom";
 import axios from "axios";
 function App() {
-  let [isAuth, setAuth] = useState(false);
+  let [isAuthnsign, setAuth] = useState({
+    isAuth: false,
+    isSign: true
+  });
+  // let [isSignUp, setSignup] = useState(false);
+  // cookies
   const handleAuth = () => {
     // setAuth(!isAuth);
     window.location = "/auth/google";
@@ -13,11 +18,15 @@ function App() {
       axios.get("/user").then(
         (res) => {
           let { data } = res;
-          if (data.status&&data.status == "success") {
-            setAuth(true);
-            console.log(data.user);
-          }else{
-            console.log("Please Login")
+          if (data.status && data.status == "success") {
+            setAuth({
+              isAuth: true,
+              isSign: true
+            });
+
+            // console.log(data.user);
+          } else {
+            console.log("Please Login");
           }
         }
       )
@@ -28,15 +37,23 @@ function App() {
       <h1>Hello Oauth</h1>
       <Link to="/home">Home</Link>
       <Link to="/setting">Setting</Link>
+      {isAuthnsign.isSign == false ? <Redirect to="/signup">
+
+      </Redirect> : <Redirect to="/"></Redirect>}
       <Switch>
         <Route path="/" exact>
-          <LoginPage handleAuth={handleAuth} isAuth={isAuth}></LoginPage>
+          <LoginPage handleAuth={handleAuth} isAuth={isAuthnsign.isAuth}></LoginPage>
         </Route>
         {/* isAuth=> true */}
         {/* home page */}
+        <Route path="/signup">
+          <SignUp></SignUp>
+
+        </Route>
+
         <Route path="/home" render={(props) => {
           return (
-            isAuth == true ?
+            isAuthnsign.isAuth == true ?
               <Home {...props}></Home> :
               <Redirect to="/"></Redirect>
           )
@@ -45,7 +62,7 @@ function App() {
         {/* settings Page */}
         <Route path="/setting" render={(props) => {
           return (
-            isAuth == true ?
+            isAuthnsign.isAuth == true ?
               <Setting {...props}></Setting> :
               <Redirect to="/" ></Redirect>
           )
@@ -69,5 +86,8 @@ function Home() {
 }
 function Setting() {
   return <h1>Setting Page</h1>
+}
+function SignUp() {
+  return <h1>Signup Page</h1>
 }
 export default App;
